@@ -12,7 +12,9 @@ var elixir = require('laravel-elixir');
  */
 
 elixir(function(mix) {
-    mix.sass('app.scss')
-    .version('public/css/app.css');
+    mix.sass('app.scss','public/css/app.css')
+    .sass('clock.scss','public/css/clock.css')
+    .scripts('clock.js','public/js/clock.js');
+    mix.version(['public/css/app.css','public/css/clock.css','public/js/clock.js']);
 
 });

@@ -20,6 +20,6 @@
     </nav>	
 
     <div class="banner">
-        <img src="img/1.jpg">
+        <img src="img/settings/1.jpg">
     </div>
 </header>

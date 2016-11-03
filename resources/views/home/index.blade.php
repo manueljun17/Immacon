@@ -1,6 +1,7 @@
 @extends('app')
 
 @section('content')
+
 	<figure class="main-content">
         <div class="mission-vision">
             <div class="mv-header">
@@ -24,4 +25,10 @@
             </div>
         </div>    
     </figure>
+    <ul id="clock">	
+	   	<li id="sec"></li>
+	   	<li id="hour"></li>
+		<li id="min"></li>
+	</ul>
+  
 @endsection
