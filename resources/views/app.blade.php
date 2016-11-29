@@ -14,6 +14,6 @@
 	<script src="https://code.jquery.com/jquery.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<script src="{!! elixir('js/clock.js') !!}"></script>
-	@yield('footer')
+	@include('partials.footer')
 </body>
 </html>
