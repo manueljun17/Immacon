@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Event;
+use App\Parishofficers;
 
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
 
-class EventsController extends Controller
+class ParishOfficersController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,8 +17,7 @@ class EventsController extends Controller
      */
     public function index()
     {
-        $events = Event::latest('published_at')->get();
-    	return view('events.index',compact('events'));
+        //
     }
 
     /**
