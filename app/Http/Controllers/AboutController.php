@@ -8,6 +8,10 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 
+use Validator;
+
+use Illuminate\Support\Facades\Redirect;
+
 class AboutController extends Controller
 {
     /**
@@ -17,7 +21,8 @@ class AboutController extends Controller
      */
     public function index()
     {
-        //
+        $abouts = About::all();
+        return view('about.index', compact('abouts'));
     }
 
     /**
@@ -60,7 +65,12 @@ class AboutController extends Controller
      */
     public function edit($id)
     {
-        //
+        $about = About::find($id);
+        if (is_null($about))
+        {
+            return Redirect::route('about.index');
+        }
+        return view('about.edit', compact('about'));
     }
 
     /**
@@ -72,7 +82,16 @@ class AboutController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $input = $request->all();
+        $validation = Validator::make($input, About::$rules);
+        if ($validation->passes())
+        {
+            $about = About::find($id);
+            $about->update($input);
+            return Redirect::route('about.index');
+        }
+        return Redirect::route('about.edit', $id)
+            ->withInput();
     }
 
     /**

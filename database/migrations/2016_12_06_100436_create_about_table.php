@@ -12,14 +12,14 @@ class CreateAboutTable extends Migration
      */
     public function up()
     {
-        Schema::create('about', function (Blueprint $table) {
+        Schema::create('abouts', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('mission', 255);
-            $table->string('vision', 255);
-            $table->string('history', 255);
-            $table->string('location', 100);
-            $table->string('bank_account', 50);
-            $table->string('email_account', 50);
+            $table->text('mission');
+            $table->text('vision');
+            $table->text('history');
+            $table->string('location', 255);
+            $table->string('bank_account', 100);
+            $table->string('email_account', 100);
             $table->timestamps();
         });
     }
@@ -31,6 +31,6 @@ class CreateAboutTable extends Migration
      */
     public function down()
     {
-        Schema::drop('about');
+        Schema::drop('abouts');
     }
 }

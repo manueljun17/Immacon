@@ -14,5 +14,9 @@ class About extends Model
         'bank_account',
         'email_account'
     ];
+    public static $rules = array(
+        'bank_account' => 'required|numeric',
+        'email_account' => 'required|email'
+    );
 
 }

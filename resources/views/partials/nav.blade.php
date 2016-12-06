@@ -13,13 +13,14 @@
             <div id="navbar" class="collapse navbar-collapse">
             <ul class="nav navbar-nav navbar-right">   
                 <li><a href="/officers">Parish Officers</a></li>
-                <li><a href="/events">Events</a></li>    
+                <li><a href="/events">Events</a></li>
+                <li><a href="/about">About</a></li>
             </ul>
             </div>
         </div>
     </nav>	
 
     <div class="banner">
-        <img src="img/settings/1.jpg">
+        <img src="{{asset('img/settings/1.jpg')}}">
     </div>
 </header>
