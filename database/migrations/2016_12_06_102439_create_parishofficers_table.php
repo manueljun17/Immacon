@@ -15,8 +15,8 @@ class CreateParishofficersTable extends Migration
         Schema::create('parishofficers', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->text('description');
             $table->string('position', 50);
+            $table->text('description');
             $table->string('user_image', 255);
             $table->timestamps();
         });

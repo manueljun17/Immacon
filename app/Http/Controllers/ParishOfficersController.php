@@ -4,9 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Parishofficers;
 
+use Carbon\Carbon;
+
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Validator;
 
 class ParishOfficersController extends Controller
 {
@@ -17,7 +22,8 @@ class ParishOfficersController extends Controller
      */
     public function index()
     {
-        //
+        $parishofficers = Parishofficers::all();
+        return view('parishofficers.index', compact('parishofficers'));
     }
 
     /**
@@ -27,7 +33,8 @@ class ParishOfficersController extends Controller
      */
     public function create()
     {
-        //
+        $defaultImage = 'image/settings/default.png';
+        return view('parishofficers.create', compact('defaultImage'));
     }
 
     /**
@@ -38,7 +45,33 @@ class ParishOfficersController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $rules = [
+            'name' => 'required',
+            'position' => 'required',
+            'description' => 'required',
+            'user_image'=>'required|image'
+        ];
+        $validator = Validator::make($request->all(), $rules);
+        if($validator->fails()){
+        return Redirect::route('parishofficers.create')
+        ->withErrors($validator)
+        ->withInput();
+        }
+        $file = $request->file('user_image');
+        // $mytime = Carbon::now()->toTimeString();
+        $destinationPath = 'image/profile/';
+        $extension = $file->getClientOriginalExtension();
+        $filename= $file->getClientOriginalName();
+        // $filename= $mytime.$file->getClientOriginalName();
+        $uploadSuccess = $request->file('user_image')
+        ->move($destinationPath, $filename);
+        ParishOfficers::create([
+        'name' => $request->get('name'),
+        'position' => $request->get('position'),
+        'description' => $request->get('description'),
+        'user_image' => $destinationPath . $filename
+        ]);
+        return Redirect::to('parishofficers');
     }
 
     /**
