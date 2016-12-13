@@ -14,6 +14,7 @@
                 <th>Description</th>
                 <th>Profile</th>
                 <th></th>
+                <th></th>
             </tr>
         </thead>
 
@@ -24,7 +25,14 @@
                     <td>{{ $parishofficer->position }}</td>
                     <td>{{ $parishofficer->description }}</td>
                     <td><img src="{{ asset($parishofficer->user_image)}}" width="50px" height="50px"></td>
-                    <td><a class="btn btn-info" href="{{ route('parishofficers.edit',array($parishofficer->id)) }}">Edit</a></td>
+                    <td>
+                        <a class="btn btn-info" href="{{ route('parishofficers.show',array($parishofficer->id)) }}">Show</a>
+                        <a class="btn btn-success" href="{{ route('parishofficers.edit',array($parishofficer->id)) }}">Edit</a>
+                        
+                    </td>
+                    <td>{{ Form::open(array('route' => array('parishofficers.destroy', $parishofficer->id), 'method' => 'delete')) }}
+                            <button type="submit" class="btn btn-danger" onclick="return confirm('Do you really want to delete the information?')">Delete</button>
+                        {{ Form::close() }}</td>
                 </tr>
             @endforeach
         </tbody>

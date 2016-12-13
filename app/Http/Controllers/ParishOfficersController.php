@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use File;
+
 use App\Parishofficers;
 
 use Carbon\Carbon;
@@ -80,9 +82,10 @@ class ParishOfficersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show( $id )
     {
-        //
+        $parishofficers = ParishOfficers::find($id);
+        return view('parishofficers.show',compact('parishofficers'));
     }
 
     /**
@@ -116,6 +119,9 @@ class ParishOfficersController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $parishofficer = ParishOfficers::find($id);
+        File::delete($parishofficer->user_image);
+        $parishofficer->delete();
+        return Redirect::route('parishofficers.index');
     }
 }
