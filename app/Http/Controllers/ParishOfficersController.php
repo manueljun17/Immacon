@@ -45,7 +45,7 @@ class ParishOfficersController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Parishofficers $parishofficers, Request $request)
     {
         $rules = [
             'name' => 'required',
@@ -67,11 +67,11 @@ class ParishOfficersController extends Controller
         // $filename= $mytime.$file->getClientOriginalName();
         $uploadSuccess = $request->file('user_image')
         ->move($destinationPath, $filename);
-        ParishOfficers::create([
-        'name' => $request->get('name'),
-        'position' => $request->get('position'),
-        'description' => $request->get('description'),
-        'user_image' => $destinationPath . $filename
+        $parishofficers->create([
+            'name' => $request->get('name'),
+            'position' => $request->get('position'),
+            'description' => $request->get('description'),
+            'user_image' => $destinationPath . $filename
         ]);
         return Redirect::to('parishofficers');
     }
@@ -96,7 +96,9 @@ class ParishOfficersController extends Controller
      */
     public function edit($id)
     {
-        //
+        $defaultImage = 'image/settings/default.png';
+        $parishofficers = ParishOfficers::find($id);
+        return view('parishofficers.edit',compact('parishofficers','defaultImage'));
     }
 
     /**
@@ -106,9 +108,42 @@ class ParishOfficersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update( Parishofficers $parishofficers, Request $request)
     {
-        //
+        $rules = [
+            'name' => 'required',
+            'position' => 'required',
+            'description' => 'required',
+            'user_image'=>'image'
+        ];
+        $validator = Validator::make($request->all(), $rules);
+        if($validator->fails()){
+        return Redirect::route('parishofficers.edit', array($parishofficers->id))
+        ->withErrors($validator)
+        ->withInput();
+        }
+        if( $request->file('user_image')) {
+            $file = $request->file('user_image');
+            $destinationPath = 'image/profile/';
+            $extension = $file->getClientOriginalExtension();
+            $filename= $file->getClientOriginalName();
+            $uploadSuccess = $request->file('user_image')
+            ->move($destinationPath, $filename);
+            $parishofficers->update([
+                'name' => $request->get('name'),
+                'position' => $request->get('position'),
+                'description' => $request->get('description'),
+                'user_image' => $destinationPath . $filename
+            ]);
+        }
+        else {
+            $parishofficers->update([
+                'name' => $request->get('name'),
+                'position' => $request->get('position'),
+                'description' => $request->get('description')
+            ]);
+        }
+    	return redirect('parishofficers');
     }
 
     /**
