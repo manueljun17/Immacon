@@ -60,10 +60,10 @@ class ParishOfficersController extends Controller
         ->withInput();
         }
         $file = $request->file('user_image');
-        // $mytime = Carbon::now()->toTimeString();
+        $mytime = Carbon::now()->format('s-m-');
         $destinationPath = 'image/profile/';
         $extension = $file->getClientOriginalExtension();
-        $filename= $file->getClientOriginalName();
+        $filename= $mytime . $file->getClientOriginalName();
         // $filename= $mytime.$file->getClientOriginalName();
         $uploadSuccess = $request->file('user_image')
         ->move($destinationPath, $filename);
@@ -71,7 +71,7 @@ class ParishOfficersController extends Controller
             'name' => $request->get('name'),
             'position' => $request->get('position'),
             'description' => $request->get('description'),
-            'user_image' => $destinationPath . $filename
+            'user_image' => $destinationPath . $filename 
         ]);
         return Redirect::to('parishofficers');
     }
@@ -123,17 +123,19 @@ class ParishOfficersController extends Controller
         ->withInput();
         }
         if( $request->file('user_image')) {
+            $mytime = Carbon::now()->format('s-m-');
+            File::delete($parishofficers->user_image);
             $file = $request->file('user_image');
             $destinationPath = 'image/profile/';
             $extension = $file->getClientOriginalExtension();
-            $filename= $file->getClientOriginalName();
+            $filename= $mytime . $file->getClientOriginalName();
             $uploadSuccess = $request->file('user_image')
             ->move($destinationPath, $filename);
             $parishofficers->update([
                 'name' => $request->get('name'),
                 'position' => $request->get('position'),
                 'description' => $request->get('description'),
-                'user_image' => $destinationPath . $filename
+                'user_image' => $destinationPath . $filename 
             ]);
         }
         else {
@@ -159,4 +161,5 @@ class ParishOfficersController extends Controller
         $parishofficer->delete();
         return Redirect::route('parishofficers.index');
     }
+
 }
