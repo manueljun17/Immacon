@@ -53,7 +53,7 @@ Route::get('/', function () {
 Route::group(['middleware' => 'web'], function () {
  
     Route::get('/', 'HomeController@index')->name('main');
-    Route::get('/events', 'EventsController@index');
+    
     //About
     
     Route::get('/about', [
@@ -79,6 +79,8 @@ Route::group(['middleware' => 'web'], function () {
 });
 //Auth    
  Route::auth();
+ //Events
+ Route::resource('events', 'EventsController');
 //ParishOfficers
  Route::post('/parishofficers', [
     'uses' => 'ParishofficersController@store',

@@ -11,8 +11,10 @@ class Event extends Model
     protected $fillable = [
     	'title',
     	'body',
-    	'published_at',
-        'user_id'//temporary
+        'start_time',
+        'end_time',
+    	'event_location',
+        'event_date'
     ];
 
     protected $dates = [
@@ -34,5 +36,9 @@ class Event extends Model
     public function getPublishedAtAttribute($date)
     {
     	return Carbon::parse($date)->format('Y-m-d');
+    }
+    public function user()
+    {
+        return $this->belongsTo('App\User');
     }
 }

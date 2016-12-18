@@ -2,14 +2,23 @@
 
 namespace App\Http\Controllers;
 
+use Auth;
+
 use App\Event;
+
+use Carbon\Carbon;
 
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
 
+use Illuminate\Support\Facades\Redirect;
+
+use Illuminate\Support\Facades\Validator;
+
 class EventsController extends Controller
 {
+    
     /**
      * Display a listing of the resource.
      *
@@ -17,7 +26,7 @@ class EventsController extends Controller
      */
     public function index()
     {
-        $events = Event::latest('published_at')->get();
+        $events = Event::latest('created_at')->get();
     	return view('events.index',compact('events'));
     }
 
@@ -28,7 +37,7 @@ class EventsController extends Controller
      */
     public function create()
     {
-        //
+        return view('events.create');
     }
 
     /**
@@ -37,9 +46,26 @@ class EventsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Event $event, Request $request)
     {
-        //
+        
+        $validator = Validator::make($request->all(), $this->validator());
+        if($validator->fails()){
+        return Redirect::route('events.create')
+        ->withErrors($validator)
+        ->withInput();
+        }
+        
+        $event = Auth::user()->events()->create([
+            'title' => $request->get('title'),
+            'body' => $request->get('body'),
+            'event_location' => $request->get('event_location'),
+            'event_date' => $request->get('event_date'),
+            'start_time' => $request->get('start_time'),
+            'end_time' => $request->get('end_time') 
+        ]);
+        
+        return redirect('events');  
     }
 
     /**
@@ -50,7 +76,8 @@ class EventsController extends Controller
      */
     public function show($id)
     {
-        //
+        $events = Event::find($id);
+        return view('events.show',compact('events'));
     }
 
     /**
@@ -61,7 +88,8 @@ class EventsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $events = Event::find($id);
+        return view('events.edit',compact('events'));
     }
 
     /**
@@ -71,9 +99,25 @@ class EventsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Event $event, Request $request, $id)
     {
-        //
+        $validator = Validator::make($request->all(), $this->validator());
+        if($validator->fails()){
+        return Redirect::route('events.create')
+        ->withErrors($validator)
+        ->withInput();
+        }
+        
+        $event = Auth::user()->events()->update([
+            'title' => $request->get('title'),
+            'body' => $request->get('body'),
+            'event_location' => $request->get('event_location'),
+            'event_date' => $request->get('event_date'),
+            'start_time' => $request->get('start_time'),
+            'end_time' => $request->get('end_time') 
+        ]);
+        
+        return redirect('events');
     }
 
     /**
@@ -84,6 +128,23 @@ class EventsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $events = Event::find($id);
+        $events->delete();
+        return Redirect::route('events.index');
+    }
+    /**
+     * Get Rules
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    protected function validator()
+    {
+     
+        return [
+            'title' => 'required',
+            'body' => 'required',
+            'event_date' => 'required|date',
+        ];
     }
 }

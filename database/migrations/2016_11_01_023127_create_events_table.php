@@ -17,9 +17,11 @@ class CreateEventsTable extends Migration
             $table->integer('user_id')->unsigned();
             $table->string('title');
             $table->text('body');
+            $table->string('event_location');
+            $table->time('start_time');
+            $table->time('end_time');
+            $table->date('event_date');
             $table->timestamps();
-            $table->timestamp('published_at');
-
             $table->foreign('user_id')
                   ->references('id')
                   ->on('users')
