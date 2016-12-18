@@ -60,7 +60,7 @@ class ParishOfficersController extends Controller
         ->withInput();
         }
         $file = $request->file('user_image');
-        $mytime = Carbon::now()->format('s-m-');
+        $mytime = Carbon::now()->format('s-h-d-');
         $destinationPath = 'image/profile/';
         $extension = $file->getClientOriginalExtension();
         $filename= $mytime . $file->getClientOriginalName();
@@ -123,7 +123,7 @@ class ParishOfficersController extends Controller
         ->withInput();
         }
         if( $request->file('user_image')) {
-            $mytime = Carbon::now()->format('s-m-');
+            $mytime = Carbon::now()->format('s-h-d-');
             File::delete($parishofficers->user_image);
             $file = $request->file('user_image');
             $destinationPath = 'image/profile/';
@@ -159,7 +159,7 @@ class ParishOfficersController extends Controller
         $parishofficer = ParishOfficers::find($id);
         File::delete($parishofficer->user_image);
         $parishofficer->delete();
-        return Redirect::route('parishofficers.index');
+        return Redirect::route('parishofficers');
     }
 
 }

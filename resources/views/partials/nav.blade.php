@@ -10,13 +10,25 @@
             </button>
             <a class="navbar-brand" href="/">ImmaconAngelesCityPH CHURCH</a>
             </div>
-            <div id="navbar" class="collapse navbar-collapse">
-            <ul class="nav navbar-nav navbar-right">   
-                <li><a href="/parishofficers">Parish Officers</a></li>
-                <li><a href="/events">Events</a></li>
-                <li><a href="/about">About</a></li>
-            </ul>
-            </div>
+            @if(!Auth::check())
+                
+                <div id="navbar" class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav navbar-right">   
+                        <li><a href="/login">Login</a></li>
+                        <li><a href="/register">Register</a></li>
+                    </ul>
+                </div>
+            @else
+                <div id="navbar" class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav navbar-right">   
+                        <li><a href="/parishofficers">Parish Officers</a></li>
+                        <li><a href="/events">Events</a></li>
+                        <li><a href="/about">About</a></li>
+                        <li><a href="/logout">Logout</a></li>
+                    </ul>
+                </div>
+            @endif
+            
         </div>
     </nav>	
 

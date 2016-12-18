@@ -8,5 +8,5 @@
 	<article>
 		<h4>Description: {{ $parishofficers->description }}</h4>
 	</article>
-	<a class="btn btn-info" href="{{ route('parishofficers.index') }}">Back</a>
+	<a class="btn btn-info" href="{{ route('parishofficers') }}">Back</a>
 @stop

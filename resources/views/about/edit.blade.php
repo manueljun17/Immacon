@@ -26,7 +26,7 @@
         </li>
         <li>
             {{ Form::submit('Update', array('class' => 'btn btn-info')) }}
-            <a class="btn btn-success" href="{{ route('about.index') }}">Back</a>
+            <a class="btn btn-success" href="{{ route('about') }}">Back</a>
         </li>
     </ul>
 {{ Form::close() }}
