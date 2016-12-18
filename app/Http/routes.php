@@ -79,8 +79,6 @@ Route::group(['middleware' => 'web'], function () {
 });
 //Auth    
  Route::auth();
- //Events
- Route::resource('events', 'EventsController');
 //ParishOfficers
  Route::post('/parishofficers', [
     'uses' => 'ParishofficersController@store',
@@ -121,6 +119,50 @@ Route::delete('/parishofficers/{parishofficers}', [
 Route::get('/parishofficers/{parishofficers}/edit', [
     'uses' => 'ParishofficersController@edit',
     'as' => 'parishofficers.edit',
+    'middleware' => 'roles',
+    'roles' => ['Admin']
+]);
+
+//Events
+ Route::post('/events', [
+    'uses' => 'EventsController@store',
+    'as' => 'events.store',
+    'middleware' => 'roles',
+    'roles' => ['Admin']
+]);
+Route::get('/events', [
+    'uses' => 'EventsController@index',
+    'as' => 'events',
+    'middleware' => 'roles',
+    'roles' => ['Admin']
+]);
+Route::get('/events/create', [
+    'uses' => 'EventsController@create',
+    'as' => 'events.create',
+    'middleware' => 'roles',
+    'roles' => ['Admin']
+]);
+Route::get('/events/{events}', [
+    'uses' => 'EventsController@show',
+    'as' => 'events.show',
+    'middleware' => 'roles',
+    'roles' => ['Admin']
+]); 
+Route::patch('/events/{events}', [
+    'uses' => 'EventsController@update',
+    'as' => 'events.update',
+    'middleware' => 'roles',
+    'roles' => ['Admin']
+]);
+Route::delete('/events/{events}', [
+    'uses' => 'EventsController@destroy',
+    'as' => 'events.destroy',
+    'middleware' => 'roles',
+    'roles' => ['Admin']
+]); 
+Route::get('/events/{events}/edit', [
+    'uses' => 'EventsController@edit',
+    'as' => 'events.edit',
     'middleware' => 'roles',
     'roles' => ['Admin']
 ]);

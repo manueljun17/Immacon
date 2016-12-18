@@ -130,7 +130,7 @@ class EventsController extends Controller
     {
         $events = Event::find($id);
         $events->delete();
-        return Redirect::route('events.index');
+        return Redirect::route('events');
     }
     /**
      * Get Rules
