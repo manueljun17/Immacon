@@ -78,7 +78,7 @@ Route::group(['middleware' => 'web'], function () {
       
 });
 //Auth    
- Route::auth();
+Route::auth();
 //ParishOfficers
 Route::get('parishofficers/autocomplete', [
     'uses' => 'ParishofficersController@autocomplete', 
@@ -167,6 +167,54 @@ Route::delete('/events/{events}', [
 Route::get('/events/{events}/edit', [
     'uses' => 'EventsController@edit',
     'as' => 'events.edit',
+    'middleware' => 'roles',
+    'roles' => ['Admin']
+]);
+
+//Organizations
+Route::get('organizations/autocomplete', [
+    'uses' => 'OrganizationsController@autocomplete', 
+    'as' => 'organizations.autocomplete'
+]);
+ Route::post('/organizations', [
+    'uses' => 'OrganizationsController@store',
+    'as' => 'organizations.store',
+    'middleware' => 'roles',
+    'roles' => ['Admin']
+]);
+Route::get('/organizations', [
+    'uses' => 'OrganizationsController@index',
+    'as' => 'organizations',
+    'middleware' => 'roles',
+    'roles' => ['Admin']
+]);
+Route::get('/organizations/create', [
+    'uses' => 'OrganizationsController@create',
+    'as' => 'organizations.create',
+    'middleware' => 'roles',
+    'roles' => ['Admin']
+]);
+Route::get('/organizations/{organizations}', [
+    'uses' => 'OrganizationsController@show',
+    'as' => 'organizations.show',
+    'middleware' => 'roles',
+    'roles' => ['Admin']
+]); 
+Route::patch('/organizations/{organizations}', [
+    'uses' => 'OrganizationsController@update',
+    'as' => 'organizations.update',
+    'middleware' => 'roles',
+    'roles' => ['Admin']
+]);
+Route::delete('/organizations/{organizations}', [
+    'uses' => 'OrganizationsController@destroy',
+    'as' => 'organizations.destroy',
+    'middleware' => 'roles',
+    'roles' => ['Admin']
+]); 
+Route::get('/organizations/{organizations}/edit', [
+    'uses' => 'OrganizationsController@edit',
+    'as' => 'organizations.edit',
     'middleware' => 'roles',
     'roles' => ['Admin']
 ]);
