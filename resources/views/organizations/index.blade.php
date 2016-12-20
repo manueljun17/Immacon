@@ -20,6 +20,7 @@
     <table class="table table-striped table-bordered">
         <thead>
             <tr>
+                <th>ID</th>
                 <th>Name</th>
                 <th>Description</th>
                 <th></th>
@@ -31,6 +32,7 @@
         <tbody>
             @foreach ($organizations as $organization)
                 <tr>
+                    <td>{{ $organization->id }}</td>
                     <td>{{ $organization->name }}</td>
                     <td>{{ $organization->description }}</td>
                     <td>

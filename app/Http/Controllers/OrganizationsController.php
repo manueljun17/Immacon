@@ -57,7 +57,8 @@ class OrganizationsController extends Controller
      */
     public function show($id)
     {
-        //
+        $organizations = Organization::find($id);
+        return view('organizations.show',compact('organizations'));
     }
 
     /**
