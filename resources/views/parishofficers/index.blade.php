@@ -3,6 +3,17 @@
 <div>
 <h1>Parish Officers</h1>
 <a class="btn btn-info" href="{{ route('parishofficers.create') }}">Add Parish Officer</a>
+{!! Form::open(['route' => 'parishofficers', 'method' => 'GET', 'class' => 'navbar-form navbar-right', 'role' => 'search']) !!}
+
+<div class="input-group">
+    {!! Form::text('term', Request::get('term'), ['class' => 'form-control', 'placeholder' => 'Search...', 'id' => 'term']) !!}              
+    <span class="input-group-btn">
+    <button class="btn btn-default" type="submit">
+        <i class="glyphicon glyphicon-search"></i>
+    </button>
+    </span>
+</div>
+{!! Form::close() !!}
 </div>
 
 @if ($parishofficers->count())
@@ -40,6 +51,11 @@
         </tbody>
       
     </table>
+    <div class="text-center">
+    <nav>
+      {!! $parishofficers->appends( Request::query() )->render() !!}
+    </nav>
+  </div>
 @else
     There are no Parish Officers info
 @endif

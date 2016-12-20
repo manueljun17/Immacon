@@ -22,9 +22,19 @@ class ParishOfficersController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $parishofficers = Parishofficers::all();
+        $parishofficers = Parishofficers::paginate(10);
+
+        $parishofficers = Parishofficers::where(function($query) use ($request) {
+            //filter by keyword entered
+            if( ( $term = $request->get('term') ) ) {
+                $query->where('name', 'like', '%' . $term . '%');
+                $query->orWhere('position', 'like', '%' . $term . '%');
+            }
+        })
+        ->orderBy('id', 'desc')
+        ->paginate(10);
         return view('parishofficers.index', compact('parishofficers'));
     }
 
