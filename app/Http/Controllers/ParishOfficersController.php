@@ -24,8 +24,6 @@ class ParishOfficersController extends Controller
      */
     public function index(Request $request)
     {
-        $parishofficers = Parishofficers::paginate(10);
-
         $parishofficers = Parishofficers::where(function($query) use ($request) {
             //filter by keyword entered
             if( ( $term = $request->get('term') ) ) {
@@ -36,6 +34,30 @@ class ParishOfficersController extends Controller
         ->orderBy('id', 'desc')
         ->paginate(10);
         return view('parishofficers.index', compact('parishofficers'));
+    }
+
+    public function autocomplete(Request $request)
+    {
+        //Prevent this method called by non ajax
+        if($request->ajax())
+        {
+            $parishofficers = Parishofficers::where(function($query) use ($request) {
+                //filter by keyword entered
+                if( ( $term = $request->get('term') ) ) {
+                    $query->where('name', 'like', '%' . $term . '%');
+                    $query->orWhere('position', 'like', '%' . $term . '%');
+                }
+            })
+            ->orderBy('id', 'desc')
+            ->take(5)
+            ->get();
+
+        //Convert to json
+        foreach ($parishofficers as $parishofficer) {
+          $results[] = ['id' => $parishofficer->id, 'value' => $parishofficer->name];
+        }
+        return response()->json($results);
+        }
     }
 
     /**

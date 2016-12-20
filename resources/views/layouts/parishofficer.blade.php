@@ -5,6 +5,7 @@
 	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="{!! elixir('css/app.css') !!}">
 	<link rel="stylesheet" type="text/css" href="{!! elixir('css/clock.css') !!}">
+    
     <style>
         .file-upload-button {
             position: relative;
@@ -21,6 +22,8 @@
             opacity: .001;
         }
     </style>
+    <link href="{{ URL::to('src/js/jqueryui/jquery-ui.min.css') }}" rel="stylesheet">
+    <link href="{{ URL::to('src/js/jqueryui/jquery-ui.theme.min.css') }}" rel="stylesheet">
 </head>
 <body>
 	@include('partials.nav')
@@ -28,6 +31,19 @@
 	@yield('content')
 </div>
 	<script src="https://code.jquery.com/jquery.js"></script>
+    <script src="{{ URL::to('src/js/jqueryui/jquery-ui.min.js') }}"></script>
+    
+    <script>
+        $(function() {
+            $("#term").autocomplete({
+            source: "{{ route('parishofficers.autocomplete') }}",
+            minLength: 3,
+            select: function(event, ui) {
+                $("#term").val(ui.item.value);
+            }
+            });
+        }); 
+    </script>
     <script type="text/javascript">
         function showimagepreview(input) 
         {

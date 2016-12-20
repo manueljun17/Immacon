@@ -80,6 +80,10 @@ Route::group(['middleware' => 'web'], function () {
 //Auth    
  Route::auth();
 //ParishOfficers
+Route::get('parishofficers/autocomplete', [
+    'uses' => 'ParishofficersController@autocomplete', 
+    'as' => 'parishofficers.autocomplete'
+]);
  Route::post('/parishofficers', [
     'uses' => 'ParishofficersController@store',
     'as' => 'parishofficers.store',
