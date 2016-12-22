@@ -140,7 +140,6 @@ class EventsController extends Controller
      */
     protected function validator()
     {
-     
         return [
             'title' => 'required',
             'body' => 'required',

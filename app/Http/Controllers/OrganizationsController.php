@@ -7,6 +7,9 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 
 use App\Organization;
+
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Validator;
 class OrganizationsController extends Controller
 {
     /**
@@ -35,7 +38,7 @@ class OrganizationsController extends Controller
      */
     public function create()
     {
-        //
+        return view('organizations.create');
     }
 
     /**
@@ -44,9 +47,19 @@ class OrganizationsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store( Organization $organizations, Request $request )
     {
-        //
+        $validator = Validator::make($request->all(), $this->validator());
+        if($validator->fails()){
+            return Redirect::route('organizations.create')
+            ->withErrors($validator)
+            ->withInput();
+        }
+        $organizations->create([
+            'name' => $request->get('name'),
+            'description' => $request->get('description')
+        ]);
+        return Redirect::to('organizations');
     }
 
     /**
@@ -69,7 +82,8 @@ class OrganizationsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $organizations = Organization::find($id);
+        return view('organizations.edit',compact('organizations'));
     }
 
     /**
@@ -81,7 +95,18 @@ class OrganizationsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $validator = Validator::make($request->all(), $this->validator());
+        if($validator->fails()){
+        return Redirect::route('organizations.edit', array($parishofficers->id))
+        ->withErrors($validator)
+        ->withInput();
+        }
+        $organizations = Organization::find($id);
+        $organizations->update([
+            'name' => $request->get('name'),
+            'description' => $request->get('description')
+        ]);
+        return Redirect::to('organizations');
     }
 
     /**
@@ -92,6 +117,21 @@ class OrganizationsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $organizations = Organization::find($id);
+        $organizations->delete();
+        return Redirect::route('organizations');
+    }
+    /**
+     * Get Rules
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    protected function validator()
+    {
+        return [
+            'name' => 'required|min:3',
+            'description' => 'required:5',
+        ];
     }
 }
