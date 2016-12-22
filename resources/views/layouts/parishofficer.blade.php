@@ -3,6 +3,7 @@
 <head>
 	<title>ImmaconAngelesCiityPH</title>
 	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    
     <link rel="stylesheet" type="text/css" href="{!! elixir('css/app.css') !!}">
 	<link rel="stylesheet" type="text/css" href="{!! elixir('css/clock.css') !!}">
     
@@ -24,6 +25,7 @@
     </style>
     <link href="{{ URL::to('src/js/jqueryui/jquery-ui.min.css') }}" rel="stylesheet">
     <link href="{{ URL::to('src/js/jqueryui/jquery-ui.theme.min.css') }}" rel="stylesheet">
+    <link href="{{ URL::to('src/js/select2/select2.min.css') }}" rel="stylesheet" />
 </head>
 <body>
 	@include('partials.nav')
@@ -59,6 +61,12 @@
     </script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<script src="{!! elixir('js/clock.js') !!}"></script>
+    <script src="{{ URL::to('src/js/select2/select2.min.js') }}"></script>
 	@include('partials.footer')
+    <script>
+        $('#organization_list').select2({
+            placeholder: "Choose Organization"
+        });
+    </script>
 </body>
 </html>

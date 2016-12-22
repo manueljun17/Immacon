@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use File;
 
+use App\Organization;
 use App\Parishofficers;
 
 use Carbon\Carbon;
@@ -67,8 +68,9 @@ class ParishOfficersController extends Controller
      */
     public function create()
     {
+        $organizations = Organization::pluck('name', 'id');
         $defaultImage = 'image/settings/default.png';
-        return view('parishofficers.create', compact('defaultImage'));
+        return view('parishofficers.create', compact('defaultImage','organizations'));
     }
 
     /**
@@ -96,7 +98,6 @@ class ParishOfficersController extends Controller
         $destinationPath = 'image/profile/';
         $extension = $file->getClientOriginalExtension();
         $filename= $mytime . $file->getClientOriginalName();
-        // $filename= $mytime.$file->getClientOriginalName();
         $uploadSuccess = $request->file('user_image')
         ->move($destinationPath, $filename);
         $parishofficers->create([
@@ -105,6 +106,7 @@ class ParishOfficersController extends Controller
             'description' => $request->get('description'),
             'user_image' => $destinationPath . $filename 
         ]);
+        $parishofficers->organizations()->sync($request->input('organization_list'));
         return Redirect::to('parishofficers');
     }
 
@@ -128,9 +130,11 @@ class ParishOfficersController extends Controller
      */
     public function edit($id)
     {
+        $organizations = Organization::lists('name', 'id');
+         
         $defaultImage = 'image/settings/default.png';
         $parishofficers = ParishOfficers::find($id);
-        return view('parishofficers.edit',compact('parishofficers','defaultImage'));
+        return view('parishofficers.edit',compact('parishofficers','defaultImage','organizations'));
     }
 
     /**
@@ -177,6 +181,7 @@ class ParishOfficersController extends Controller
                 'description' => $request->get('description')
             ]);
         }
+        $parishofficers->organizations()->sync($request->input('organization_list'));
     	return redirect('parishofficers');
     }
 

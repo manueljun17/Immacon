@@ -20,6 +20,11 @@
  		{!! Form::text('position', null , ['class' => 'form-control']) !!}
  	</div>
 
+	<div class="form-group">
+ 		{!! Form::label('organization_list', 'Organizations:') !!}
+ 		{!! Form::select('organization_list[]', $organizations, null, ['id'=>'organization_list', 'class' => 'form-control','multiple']) !!}
+ 	</div>
+
  	<div class="form-group">
  		{!! Form::label('description','Description:') !!}
  		{!! Form::textarea('description', null , ['class' => 'form-control']) !!}
