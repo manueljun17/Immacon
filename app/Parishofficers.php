@@ -14,4 +14,8 @@ class Parishofficers extends Model
     {
         return $this->belongsToMany('App\Organization');
     }
+    public function getOrganizationListAttribute()
+    {
+        return $this->organizations->pluck('id')->all();
+    }
 }
