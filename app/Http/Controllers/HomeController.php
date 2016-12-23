@@ -6,6 +6,8 @@ use App\Http\Requests;
 use Illuminate\Http\Request;
 use Auth;
 use App\User;
+use App\About;
+use App\Event;
 class HomeController extends Controller
 {
     /**
@@ -25,6 +27,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home.index');
+        $about = About::find(1);
+        $events = Event::take(3)->orderBy('event_date', 'desc')->get();
+        return view('home.index',compact('about','events'));
     }
 }
