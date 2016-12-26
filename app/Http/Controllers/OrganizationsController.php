@@ -22,7 +22,8 @@ class OrganizationsController extends Controller
         $organizations = Organization::where(function($query) use ($request) {
             //filter by keyword entered
             if( ( $term = $request->get('term') ) ) {
-                $query->where('name', 'like', '%' . $term . '%');
+                $query->where('id', 'like', '%' . $term . '%');
+                $query->orWhere('name', 'like', '%' . $term . '%');
                 $query->orWhere('description', 'like', '%' . $term . '%');
             }
         })
@@ -93,15 +94,15 @@ class OrganizationsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update( Request $request, $id)
     {
+        $organizations = Organization::find($id);
         $validator = Validator::make($request->all(), $this->validator());
         if($validator->fails()){
-        return Redirect::route('organizations.edit', array($parishofficers->id))
+        return Redirect::route('organizations.edit', array($organizations->id))
         ->withErrors($validator)
         ->withInput();
         }
-        $organizations = Organization::find($id);
         $organizations->update([
             'name' => $request->get('name'),
             'description' => $request->get('description')

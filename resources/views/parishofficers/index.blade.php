@@ -20,6 +20,7 @@
     <table class="table table-striped table-bordered">
         <thead>
             <tr>
+                <th>ID</th>
                 <th>Profile</th>
                 <th>Name</th>
                 <th>Position</th>
@@ -33,6 +34,7 @@
         <tbody>
             @foreach ($parishofficers as $parishofficer)
                 <tr>
+                    <td>{{ $parishofficer->id }}</td>
                     <td><img src="{{ asset($parishofficer->user_image)}}" width="50px" height="50px"></td>
                     <td>{{ $parishofficer->name }}</td>
                     <td>{{ $parishofficer->position }}</td>

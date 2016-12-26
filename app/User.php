@@ -12,7 +12,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'firstname', 'lastname', 'email', 'password'
+        'first_name', 'last_name', 'email', 'password'
     ];
 
     /**
@@ -55,5 +55,9 @@ class User extends Authenticatable
     public function events()
     {
         return $this->hasMany('App\Event');
+    }
+    public function getRoleListAttribute()
+    {
+        return $this->roles->pluck('id')->all();
     }
 }

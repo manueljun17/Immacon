@@ -23,15 +23,24 @@
                     </ul>
                 </div>
             @else
+                @if(Auth::user()->hasRole('Admin'))
                 <div id="navbar" class="collapse navbar-collapse">
                     <ul class="nav navbar-nav navbar-right">   
                         <li><a href="/parishofficers">Parish Officers</a></li>
                         <li><a href="/organizations">Organizations</a></li>
                         <li><a href="/events">Events</a></li>
                         <li><a href="/about">About</a></li>
+                        <li><a href="/users">Users</a></li>
                         <li><a href="/logout">Logout</a></li>
                     </ul>
                 </div>
+                @else
+                <div id="navbar" class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav navbar-right">   
+                        <li><a href="/logout">Logout</a></li>
+                    </ul>
+                </div>
+                @endif
             @endif
             
         </div>

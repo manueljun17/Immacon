@@ -18,19 +18,18 @@ class UserTableSeeder extends Seeder
 
         $user = new User();
         $user->first_name = 'Manuel';
-        $user->last_name = 'Visitor';
-        $user->email = 'visitor@example.com';
-        $user->password = bcrypt('visitor');
+        $user->last_name = 'Manansala';
+        $user->email = 'manuel@example.com';
+        $user->password = bcrypt('manuel');
         $user->save();
-        $user->roles()->attach($role_user);
+        $user->roles()->sync( [ 1 ]);	
 
         $admin = new User();
         $admin->first_name = 'Among';
-        $admin->last_name = 'Admin';
+        $admin->last_name = 'Sonny';
         $admin->email = 'admin@example.com';
         $admin->password = bcrypt('admin');
         $admin->save();
-        $admin->roles()->attach($role_admin);
-
+        $admin->roles()->sync( [ 2 ]);	
     }
 }

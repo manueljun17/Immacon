@@ -85,7 +85,8 @@ class ParishOfficersController extends Controller
             'name' => 'required',
             'position' => 'required',
             'description' => 'required',
-            'user_image'=>'required|image'
+            'user_image'=>'required|image',
+           
         ];
         $validator = Validator::make($request->all(), $rules);
         if($validator->fails()){
@@ -150,7 +151,8 @@ class ParishOfficersController extends Controller
             'name' => 'required',
             'position' => 'required',
             'description' => 'required',
-            'user_image'=>'image'
+            'user_image'=>'image',
+            'organization_list' => 'required'
         ];
         $validator = Validator::make($request->all(), $rules);
         if($validator->fails()){

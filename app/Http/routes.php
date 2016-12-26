@@ -11,45 +11,6 @@
 |
 */
 
-/*
-Route::get('/', function () {
-    return view('welcome');
-});
-*/
-
-
-// Route::group(['middleware' => 'web'], function() {
-//     Route::get('/', 'HomeController@index');
-//     Route::auth();
-//     Route::get('/home', 'HomeController@index');
-//     Route::get('/events', 'EventsController@index');
-//     Route::resource('about', 'AboutController');
-    
-// });
-// Route::resource('parishofficers', 'ParishOfficersController');
-
-// Route::group(['middleware' => 'web'], function () {
- 
-//     Route::get('/', 'HomeController@index')->name('main');
-    // Route::get('/login', [
-    //     'uses' => 'AuthController@showLoginForm',
-    //     'as' => 'login'
-    // ]);
-    // Route::get('/register', [
-    //     'uses' => 'AuthController@showRegistrationForm',
-    //     'as' => 'register'
-    // ]);
-    // Route::post('/register', [
-    //     'uses' => 'AuthController@register',
-    //     'as' => 'register'
-    // ]);
-    // Route::get('/logout', [
-    //     'uses' => 'AuthController@getLogout',
-    //     'as' => 'logout'
-    // ]);
-   
-// });
-
 Route::group(['middleware' => 'web'], function () {
  
     Route::get('/', 'HomeController@index')->name('main');
@@ -215,6 +176,54 @@ Route::delete('/organizations/{organizations}', [
 Route::get('/organizations/{organizations}/edit', [
     'uses' => 'OrganizationsController@edit',
     'as' => 'organizations.edit',
+    'middleware' => 'roles',
+    'roles' => ['Admin']
+]);
+
+//Users
+Route::get('users/autocomplete', [
+    'uses' => 'UsersController@autocomplete', 
+    'as' => 'users.autocomplete'
+]);
+ Route::post('/users', [
+    'uses' => 'UsersController@store',
+    'as' => 'users.store',
+    'middleware' => 'roles',
+    'roles' => ['Admin']
+]);
+Route::get('/users', [
+    'uses' => 'UsersController@index',
+    'as' => 'users',
+    'middleware' => 'roles',
+    'roles' => ['Admin']
+]);
+Route::get('/users/create', [
+    'uses' => 'UsersController@create',
+    'as' => 'users.create',
+    'middleware' => 'roles',
+    'roles' => ['Admin']
+]);
+Route::get('/users/{users}', [
+    'uses' => 'UsersController@show',
+    'as' => 'users.show',
+    'middleware' => 'roles',
+    'roles' => ['Admin']
+]); 
+Route::patch('/users/{users}', [
+    'uses' => 'UsersController@update',
+    'as' => 'users.update',
+    'middleware' => 'roles',
+    'roles' => ['Admin']
+]);
+Route::delete('/users/{users}', [
+    'uses' => 'UsersController@destroy',
+    'as' => 'users.destroy',
+    'middleware' => 'roles',
+    'roles' => ['Admin']
+]); 
+Route::get('/users/{users}/edit', [
+    'uses' => 'UsersController@edit',
+    'as' => 'users.edit',
     'middleware' => 'roles',
     'roles' => ['Admin']
 ]);
