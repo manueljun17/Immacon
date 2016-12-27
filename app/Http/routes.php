@@ -191,9 +191,9 @@ Route::get('users/autocomplete', [
     'middleware' => 'roles',
     'roles' => ['Admin']
 ]);
-Route::get('/users', [
+Route::get('/admin/users', [
     'uses' => 'UsersController@index',
-    'as' => 'users',
+    'as' => 'admin.users',
     'middleware' => 'roles',
     'roles' => ['Admin']
 ]);

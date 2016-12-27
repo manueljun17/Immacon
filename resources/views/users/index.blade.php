@@ -3,7 +3,7 @@
 <div>
 <h1>User Management</h1>
 <a class="btn btn-info" href="{{ route('users.create') }}">Add Users</a>
-{!! Form::open(['route' => 'users', 'method' => 'GET', 'class' => 'navbar-form navbar-right', 'role' => 'search']) !!}
+{!! Form::open(['route' => 'admin.users', 'method' => 'GET', 'class' => 'navbar-form navbar-right', 'role' => 'search']) !!}
 
 <div class="input-group">
     {!! Form::text('term', Request::get('term'), ['class' => 'form-control', 'placeholder' => 'Search...', 'id' => 'term']) !!}              
