@@ -55,7 +55,7 @@ class UsersController extends Controller
     {
         $validator = Validator::make($request->all(), $this->validator());
         if($validator->fails()){
-            return Redirect::route('users.create')
+            return Redirect::route('admin.users.create')
             ->withErrors($validator)
             ->withInput();
         }
@@ -66,7 +66,7 @@ class UsersController extends Controller
             'password' =>  bcrypt($request->get('password')),
         ]);
         $users->roles()->sync($request->input('role_list'));
-        return Redirect::to('users');
+        return Redirect::route('admin.users');
     }
 
     /**
@@ -106,7 +106,7 @@ class UsersController extends Controller
         $users = User::find($id);
         $validator = Validator::make($request->all(), $this->updateValidator());
         if($validator->fails()){
-        return Redirect::route('users.edit', array($users->id))
+        return Redirect::route('admin.users.edit', array($users->id))
         ->withErrors($validator)
         ->withInput();
         }
@@ -115,7 +115,7 @@ class UsersController extends Controller
             'last_name' => $request->get('last_name')
         ]);
         $users->roles()->sync($request->input('role_list'));
-        return Redirect::to('users');
+        return Redirect::route('admin.users');
     }
 
     /**
@@ -128,7 +128,7 @@ class UsersController extends Controller
     {
         $users = User::find($id);
         $users->delete();
-        return Redirect::route('users');
+        return Redirect::route('admin.users');
     }
     /**
      * Get a validator for an incoming registration request.

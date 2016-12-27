@@ -20,7 +20,7 @@
     <script>
         $(function() {
             $("#term").autocomplete({
-            source: "{{ route('users.autocomplete') }}",
+            source: "{{ route('admin.users.autocomplete') }}",
             minLength: 3,
             select: function(event, ui) {
                 $("#term").val(ui.item.value);

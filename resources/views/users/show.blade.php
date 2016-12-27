@@ -9,5 +9,5 @@
         <div>User: <input disabled type="checkbox" {{ $users->hasRole('User') ? 'checked' : '' }} name="role_user"></div>
         <div>Admin: <input disabled type="checkbox" {{ $users->hasRole('Admin') ? 'checked' : '' }} name="role_admin"></div>
 	</article>
-	<a class="btn btn-info" href="{{ route('users') }}">Back</a>
+	<a class="btn btn-info" href="{{ route('admin.users') }}">Back</a>
 @stop

@@ -181,13 +181,13 @@ Route::get('/organizations/{organizations}/edit', [
 ]);
 
 //Users
-Route::get('users/autocomplete', [
+Route::get('/admin/users/autocomplete', [
     'uses' => 'UsersController@autocomplete', 
-    'as' => 'users.autocomplete'
+    'as' => 'admin.users.autocomplete'
 ]);
- Route::post('/users', [
+ Route::post('/admin/users', [
     'uses' => 'UsersController@store',
-    'as' => 'users.store',
+    'as' => 'admin.users.store',
     'middleware' => 'roles',
     'roles' => ['Admin']
 ]);
@@ -197,33 +197,33 @@ Route::get('/admin/users', [
     'middleware' => 'roles',
     'roles' => ['Admin']
 ]);
-Route::get('/users/create', [
+Route::get('/admin/users/create', [
     'uses' => 'UsersController@create',
-    'as' => 'users.create',
+    'as' => 'admin.users.create',
     'middleware' => 'roles',
     'roles' => ['Admin']
 ]);
-Route::get('/users/{users}', [
+Route::get('/admin/users/{users}', [
     'uses' => 'UsersController@show',
-    'as' => 'users.show',
+    'as' => 'admin.users.show',
     'middleware' => 'roles',
     'roles' => ['Admin']
 ]); 
-Route::patch('/users/{users}', [
+Route::patch('/admin/users/{users}', [
     'uses' => 'UsersController@update',
-    'as' => 'users.update',
+    'as' => 'admin.users.update',
     'middleware' => 'roles',
     'roles' => ['Admin']
 ]);
-Route::delete('/users/{users}', [
+Route::delete('/admin/users/{users}', [
     'uses' => 'UsersController@destroy',
-    'as' => 'users.destroy',
+    'as' => 'admin.users.destroy',
     'middleware' => 'roles',
     'roles' => ['Admin']
 ]); 
-Route::get('/users/{users}/edit', [
+Route::get('/admin/users/{users}/edit', [
     'uses' => 'UsersController@edit',
-    'as' => 'users.edit',
+    'as' => 'admin.users.edit',
     'middleware' => 'roles',
     'roles' => ['Admin']
 ]);

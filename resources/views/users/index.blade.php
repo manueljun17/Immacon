@@ -2,7 +2,7 @@
 @section('content')
 <div>
 <h1>User Management</h1>
-<a class="btn btn-info" href="{{ route('users.create') }}">Add Users</a>
+<a class="btn btn-info" href="{{ route('admin.users.create') }}">Add Users</a>
 {!! Form::open(['route' => 'admin.users', 'method' => 'GET', 'class' => 'navbar-form navbar-right', 'role' => 'search']) !!}
 
 <div class="input-group">
@@ -42,12 +42,12 @@
                     <td><input disabled type="checkbox" {{ $user->hasRole('User') ? 'checked' : '' }} name="role_user"></td>
                     <td><input disabled type="checkbox" {{ $user->hasRole('Admin') ? 'checked' : '' }} name="role_admin"></td>
                     <td>
-                        <a class="btn btn-info" href="{{ route('users.show',array($user->id)) }}">Show</a>
+                        <a class="btn btn-info" href="{{ route('admin.users.show',array($user->id)) }}">Show</a>
                     </td>
                     <td>
-                        <a class="btn btn-success" href="{{ route('users.edit',array($user->id)) }}">Edit</a>
+                        <a class="btn btn-success" href="{{ route('admin.users.edit',array($user->id)) }}">Edit</a>
                     </td>
-                    <td>{{ Form::open(array('route' => array('users.destroy', $user->id), 'method' => 'delete')) }}
+                    <td>{{ Form::open(array('route' => array('admin.users.destroy', $user->id), 'method' => 'delete')) }}
                             <button type="submit" class="btn btn-danger" onclick="return confirm('Do you really want to delete this information?')">Delete</button>
                         {{ Form::close() }}</td>
                 </tr>
