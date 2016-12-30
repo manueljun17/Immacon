@@ -22,144 +22,55 @@ Route::group(['middleware' => 'web'], function () {
 //Auth    
 Route::auth();
 //ParishOfficers
-Route::get('parishofficers/autocomplete', [
+Route::get('/admin/parishofficers/autocomplete', [
     'uses' => 'ParishofficersController@autocomplete', 
-    'as' => 'parishofficers.autocomplete'
+    'as' => 'admin.parishofficers.autocomplete'
 ]);
- Route::post('/parishofficers', [
+ Route::post('/admin/parishofficers', [
     'uses' => 'ParishofficersController@store',
-    'as' => 'parishofficers.store',
+    'as' => 'admin.parishofficers.store',
     'middleware' => 'roles',
     'roles' => ['Admin']
 ]);
-Route::get('/parishofficers', [
+Route::get('/admin/parishofficers', [
     'uses' => 'ParishofficersController@index',
-    'as' => 'parishofficers',
+    'as' => 'admin.parishofficers',
     'middleware' => 'roles',
     'roles' => ['Admin']
 ]);
-Route::get('/parishofficers/create', [
+Route::get('/admin/parishofficers/create', [
     'uses' => 'ParishofficersController@create',
-    'as' => 'parishofficers.create',
+    'as' => 'admin.parishofficers.create',
     'middleware' => 'roles',
     'roles' => ['Admin']
 ]);
-Route::get('/parishofficers/{parishofficers}', [
+Route::get('/admin/parishofficers/{parishofficers}', [
     'uses' => 'ParishofficersController@show',
-    'as' => 'parishofficers.show',
+    'as' => 'admin.parishofficers.show',
     'middleware' => 'roles',
     'roles' => ['Admin']
 ]); 
-Route::patch('/parishofficers/{parishofficers}', [
+Route::patch('/admin/parishofficers/{parishofficers}', [
     'uses' => 'ParishofficersController@update',
-    'as' => 'parishofficers.update',
+    'as' => 'admin.parishofficers.update',
     'middleware' => 'roles',
     'roles' => ['Admin']
 ]);
-Route::delete('/parishofficers/{parishofficers}', [
+Route::delete('/admin/parishofficers/{parishofficers}', [
     'uses' => 'ParishofficersController@destroy',
-    'as' => 'parishofficers.destroy',
+    'as' => 'admin.parishofficers.destroy',
     'middleware' => 'roles',
     'roles' => ['Admin']
 ]); 
-Route::get('/parishofficers/{parishofficers}/edit', [
+Route::get('/admin/parishofficers/{parishofficers}/edit', [
     'uses' => 'ParishofficersController@edit',
-    'as' => 'parishofficers.edit',
+    'as' => 'admin.parishofficers.edit',
     'middleware' => 'roles',
     'roles' => ['Admin']
 ]);
 
-//Events
- Route::post('/events', [
-    'uses' => 'EventsController@store',
-    'as' => 'events.store',
-    'middleware' => 'roles',
-    'roles' => ['Admin']
-]);
-Route::get('/events', [
-    'uses' => 'EventsController@index',
-    'as' => 'events',
-    'middleware' => 'roles',
-    'roles' => ['Admin']
-]);
-Route::get('/events/create', [
-    'uses' => 'EventsController@create',
-    'as' => 'events.create',
-    'middleware' => 'roles',
-    'roles' => ['Admin']
-]);
-Route::get('/events/{events}', [
-    'uses' => 'EventsController@show',
-    'as' => 'events.show',
-    'middleware' => 'roles',
-    'roles' => ['Admin']
-]); 
-Route::patch('/events/{events}', [
-    'uses' => 'EventsController@update',
-    'as' => 'events.update',
-    'middleware' => 'roles',
-    'roles' => ['Admin']
-]);
-Route::delete('/events/{events}', [
-    'uses' => 'EventsController@destroy',
-    'as' => 'events.destroy',
-    'middleware' => 'roles',
-    'roles' => ['Admin']
-]); 
-Route::get('/events/{events}/edit', [
-    'uses' => 'EventsController@edit',
-    'as' => 'events.edit',
-    'middleware' => 'roles',
-    'roles' => ['Admin']
-]);
 
-//Organizations
-Route::get('organizations/autocomplete', [
-    'uses' => 'OrganizationsController@autocomplete', 
-    'as' => 'organizations.autocomplete'
-]);
- Route::post('/organizations', [
-    'uses' => 'OrganizationsController@store',
-    'as' => 'organizations.store',
-    'middleware' => 'roles',
-    'roles' => ['Admin']
-]);
-Route::get('/organizations', [
-    'uses' => 'OrganizationsController@index',
-    'as' => 'organizations',
-    'middleware' => 'roles',
-    'roles' => ['Admin']
-]);
-Route::get('/organizations/create', [
-    'uses' => 'OrganizationsController@create',
-    'as' => 'organizations.create',
-    'middleware' => 'roles',
-    'roles' => ['Admin']
-]);
-Route::get('/organizations/{organizations}', [
-    'uses' => 'OrganizationsController@show',
-    'as' => 'organizations.show',
-    'middleware' => 'roles',
-    'roles' => ['Admin']
-]); 
-Route::patch('/organizations/{organizations}', [
-    'uses' => 'OrganizationsController@update',
-    'as' => 'organizations.update',
-    'middleware' => 'roles',
-    'roles' => ['Admin']
-]);
-Route::delete('/organizations/{organizations}', [
-    'uses' => 'OrganizationsController@destroy',
-    'as' => 'organizations.destroy',
-    'middleware' => 'roles',
-    'roles' => ['Admin']
-]); 
-Route::get('/organizations/{organizations}/edit', [
-    'uses' => 'OrganizationsController@edit',
-    'as' => 'organizations.edit',
-    'middleware' => 'roles',
-    'roles' => ['Admin']
-]);
+
 
 //Users
 Route::get('/admin/users/autocomplete', [
@@ -227,3 +138,117 @@ Route::patch('/admin/about/{about}', [
     'middleware' => 'roles',
     'roles' => ['Admin']
 ]);
+
+//Events
+Route::get('/admin/events/autocomplete', [
+    'uses' => 'EventsController@autocomplete', 
+    'as' => 'admin.events.autocomplete'
+]);
+ Route::post('/admin/events', [
+    'uses' => 'EventsController@store',
+    'as' => 'admin.events.store',
+    'middleware' => 'roles',
+    'roles' => ['Admin']
+]);
+Route::get('/admin/events', [
+    'uses' => 'EventsController@index',
+    'as' => 'admin.events',
+    'middleware' => 'roles',
+    'roles' => ['Admin']
+]);
+Route::get('/admin/events/create', [
+    'uses' => 'EventsController@create',
+    'as' => 'admin.events.create',
+    'middleware' => 'roles',
+    'roles' => ['Admin']
+]);
+Route::get('/admin/events/{events}', [
+    'uses' => 'EventsController@show',
+    'as' => 'admin.events.show',
+    'middleware' => 'roles',
+    'roles' => ['Admin']
+]); 
+Route::patch('/admin/events/{events}', [
+    'uses' => 'EventsController@update',
+    'as' => 'admin.events.update',
+    'middleware' => 'roles',
+    'roles' => ['Admin']
+]);
+Route::delete('/admin/events/{events}', [
+    'uses' => 'EventsController@destroy',
+    'as' => 'admin.events.destroy',
+    'middleware' => 'roles',
+    'roles' => ['Admin']
+]); 
+Route::get('/admin/events/{events}/edit', [
+    'uses' => 'EventsController@edit',
+    'as' => 'admin.events.edit',
+    'middleware' => 'roles',
+    'roles' => ['Admin']
+]);
+
+//Organizations
+Route::get('/admin/organizations/autocomplete', [
+    'uses' => 'OrganizationsController@autocomplete', 
+    'as' => 'admin.organizations.autocomplete'
+]);
+ Route::post('/admin/organizations', [
+    'uses' => 'OrganizationsController@store',
+    'as' => 'admin.organizations.store',
+    'middleware' => 'roles',
+    'roles' => ['Admin']
+]);
+Route::get('/admin/organizations', [
+    'uses' => 'OrganizationsController@index',
+    'as' => 'admin.organizations',
+    'middleware' => 'roles',
+    'roles' => ['Admin']
+]);
+Route::get('/admin/organizations/create', [
+    'uses' => 'OrganizationsController@create',
+    'as' => 'admin.organizations.create',
+    'middleware' => 'roles',
+    'roles' => ['Admin']
+]);
+Route::get('/admin/organizations/{organizations}', [
+    'uses' => 'OrganizationsController@show',
+    'as' => 'admin.organizations.show',
+    'middleware' => 'roles',
+    'roles' => ['Admin']
+]); 
+Route::patch('/admin/organizations/{organizations}', [
+    'uses' => 'OrganizationsController@update',
+    'as' => 'admin.organizations.update',
+    'middleware' => 'roles',
+    'roles' => ['Admin']
+]);
+Route::delete('/admin/organizations/{organizations}', [
+    'uses' => 'OrganizationsController@destroy',
+    'as' => 'admin.organizations.destroy',
+    'middleware' => 'roles',
+    'roles' => ['Admin']
+]); 
+Route::get('/admin/organizations/{organizations}/edit', [
+    'uses' => 'OrganizationsController@edit',
+    'as' => 'admin.organizations.edit',
+    'middleware' => 'roles',
+    'roles' => ['Admin']
+]);
+
+
+/**
+*@method public routes
+*
+*/
+Route::get('/events/{events}', [
+    'uses' => 'EventsController@show',
+    'as' => 'events.show',
+    'middleware' => 'roles',
+    'roles' => ['Admin']
+]);
+Route::get('/parishofficers', [
+    'uses' => 'ParishofficersController@index',
+    'as' => 'parishofficers',
+    'middleware' => 'roles',
+    'roles' => ['Admin']
+]); 

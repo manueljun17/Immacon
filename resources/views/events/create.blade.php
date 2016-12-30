@@ -3,7 +3,7 @@
     <div id="container">
       <h1>Create New Events</h1>
         <hr />
-        {!! Form::model($events = new \App\Event, ['url'=>'/events', 'files' => true]) !!}
+        {!! Form::model($events = new \App\Event, ['url'=>'/admin/events', 'files' => true]) !!}
 
           @include('events.form', ['submitButtonText'=>'Add Event'])
 

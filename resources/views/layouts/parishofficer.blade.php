@@ -38,7 +38,7 @@
     <script>
         $(function() {
             $("#term").autocomplete({
-            source: "{{ route('parishofficers.autocomplete') }}",
+            source: "{{ route('admin.parishofficers.autocomplete') }}",
             minLength: 3,
             select: function(event, ui) {
                 $("#term").val(ui.item.value);

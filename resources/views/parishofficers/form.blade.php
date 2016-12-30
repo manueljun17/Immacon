@@ -32,5 +32,5 @@
 
  	<div class="form-group">
  		{!! Form::submit($submitButtonText, ['class' => 'btn btn-info form-control']) !!}
-        <a class="btn btn-warning form-control" href="{{ route('parishofficers') }}">Back</a>
+        <a class="btn btn-warning form-control" href="{{ route('admin.parishofficers') }}">Back</a>
  	</div>	

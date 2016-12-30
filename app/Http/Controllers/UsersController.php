@@ -33,7 +33,30 @@ class UsersController extends Controller
         ->paginate(10);
         return view('users.index', compact('users'));
     }
+    public function autocomplete(Request $request)
+    {
+        //Prevent this method called by non ajax
+        if($request->ajax())
+        {
+            $users = User::where(function($query) use ($request) {
+                //filter by keyword entered
+                if( ( $term = $request->get('term') ) ) {
+                    $query->where('id', 'like', '%' . $term . '%');
+                    $query->orWhere('first_name', 'like', '%' . $term . '%');
+                    $query->orWhere('last_name', 'like', '%' . $term . '%');
+                    $query->orWhere('email', 'like', '%' . $term . '%');
+                }
+            })
+            ->orderBy('id', 'desc')
+            ->paginate(10);
 
+        //Convert to json
+        foreach ($users as $user) {
+          $results[] = ['id' => $user->id, 'value' => $user->first_name ." ". $user->last_name];
+        }
+        return response()->json($results);
+        }
+    }
     /**
      * Show the form for creating a new resource.
      *

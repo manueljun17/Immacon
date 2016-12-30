@@ -90,7 +90,7 @@ class ParishOfficersController extends Controller
         ];
         $validator = Validator::make($request->all(), $rules);
         if($validator->fails()){
-        return Redirect::route('parishofficers.create')
+        return Redirect::route('admin.parishofficers.create')
         ->withErrors($validator)
         ->withInput();
         }
@@ -108,7 +108,7 @@ class ParishOfficersController extends Controller
             'user_image' => $destinationPath . $filename 
         ]);
         $parishofficers->organizations()->sync($request->input('organization_list'));
-        return Redirect::to('parishofficers');
+        return Redirect::route('admin.parishofficers');
     }
 
     /**
@@ -156,7 +156,7 @@ class ParishOfficersController extends Controller
         ];
         $validator = Validator::make($request->all(), $rules);
         if($validator->fails()){
-        return Redirect::route('parishofficers.edit', array($parishofficers->id))
+        return Redirect::route('admin.parishofficers.edit', array($parishofficers->id))
         ->withErrors($validator)
         ->withInput();
         }
@@ -184,7 +184,7 @@ class ParishOfficersController extends Controller
             ]);
         }
         $parishofficers->organizations()->sync($request->input('organization_list'));
-    	return redirect('parishofficers');
+    	return Redirect::route('admin.parishofficers');
     }
 
     /**
@@ -198,7 +198,7 @@ class ParishOfficersController extends Controller
         $parishofficer = ParishOfficers::find($id);
         File::delete($parishofficer->user_image);
         $parishofficer->delete();
-        return Redirect::route('parishofficers');
+        return Redirect::route('admin.parishofficers');
     }
 
 }

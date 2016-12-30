@@ -7,5 +7,5 @@
 	<article>
 		<h4>Description: {{ $organizations->description }}</h4>
 	</article>
-	<a class="btn btn-info" href="{{ route('organizations') }}">Back</a>
+	<a class="btn btn-info" href="{{ route('admin.organizations') }}">Back</a>
 @stop

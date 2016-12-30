@@ -31,7 +31,29 @@ class OrganizationsController extends Controller
         ->paginate(10);
         return view('organizations.index', compact('organizations'));
     }
+    public function autocomplete(Request $request)
+    {
+        //Prevent this method called by non ajax
+        if($request->ajax())
+        {
+            $organizations = Organization::where(function($query) use ($request) {
+                //filter by keyword entered
+                if( ( $term = $request->get('term') ) ) {
+                    $query->where('id', 'like', '%' . $term . '%');
+                    $query->orWhere('name', 'like', '%' . $term . '%');
+                    $query->orWhere('description', 'like', '%' . $term . '%');
+                }
+            })
+            ->orderBy('id', 'desc')
+            ->paginate(10);
 
+        //Convert to json
+        foreach ($organizations as $organization) {
+          $results[] = ['id' => $organization->id, 'value' => $organization->name];
+        }
+        return response()->json($results);
+        }
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -52,7 +74,7 @@ class OrganizationsController extends Controller
     {
         $validator = Validator::make($request->all(), $this->validator());
         if($validator->fails()){
-            return Redirect::route('organizations.create')
+            return Redirect::route('admin.organizations.create')
             ->withErrors($validator)
             ->withInput();
         }
@@ -60,7 +82,7 @@ class OrganizationsController extends Controller
             'name' => $request->get('name'),
             'description' => $request->get('description')
         ]);
-        return Redirect::to('organizations');
+        return Redirect::route('admin.organizations');
     }
 
     /**
@@ -99,7 +121,7 @@ class OrganizationsController extends Controller
         $organizations = Organization::find($id);
         $validator = Validator::make($request->all(), $this->validator());
         if($validator->fails()){
-        return Redirect::route('organizations.edit', array($organizations->id))
+        return Redirect::route('admin.organizations.edit', array($organizations->id))
         ->withErrors($validator)
         ->withInput();
         }
@@ -107,7 +129,7 @@ class OrganizationsController extends Controller
             'name' => $request->get('name'),
             'description' => $request->get('description')
         ]);
-        return Redirect::to('organizations');
+        return Redirect::route('admin.organizations');
     }
 
     /**
@@ -120,7 +142,7 @@ class OrganizationsController extends Controller
     {
         $organizations = Organization::find($id);
         $organizations->delete();
-        return Redirect::route('organizations');
+        return Redirect::route('admin.organizations');
     }
     /**
      * Get Rules

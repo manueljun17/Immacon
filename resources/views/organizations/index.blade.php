@@ -2,8 +2,8 @@
 @section('content')
 <div>
 <h1>Organizations</h1>
-<a class="btn btn-info" href="{{ route('organizations.create') }}">Add Organizations</a>
-{!! Form::open(['route' => 'organizations', 'method' => 'GET', 'class' => 'navbar-form navbar-right', 'role' => 'search']) !!}
+<a class="btn btn-info" href="{{ route('admin.organizations.create') }}">Add Organizations</a>
+{!! Form::open(['route' => 'admin.organizations', 'method' => 'GET', 'class' => 'navbar-form navbar-right', 'role' => 'search']) !!}
 
 <div class="input-group">
     {!! Form::text('term', Request::get('term'), ['class' => 'form-control', 'placeholder' => 'Search...', 'id' => 'term']) !!}              
@@ -36,12 +36,12 @@
                     <td>{{ $organization->name }}</td>
                     <td>{{ $organization->description }}</td>
                     <td>
-                        <a class="btn btn-info" href="{{ route('organizations.show',array($organization->id)) }}">Show</a>
+                        <a class="btn btn-info" href="{{ route('admin.organizations.show',array($organization->id)) }}">Show</a>
                     </td>
                     <td>
-                        <a class="btn btn-success" href="{{ route('organizations.edit',array($organization->id)) }}">Edit</a>
+                        <a class="btn btn-success" href="{{ route('admin.organizations.edit',array($organization->id)) }}">Edit</a>
                     </td>
-                    <td>{{ Form::open(array('route' => array('organizations.destroy', $organization->id), 'method' => 'delete')) }}
+                    <td>{{ Form::open(array('route' => array('admin.organizations.destroy', $organization->id), 'method' => 'delete')) }}
                             <button type="submit" class="btn btn-danger" onclick="return confirm('Do you really want to delete this information?')">Delete</button>
                         {{ Form::close() }}</td>
                 </tr>

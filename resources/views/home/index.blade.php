@@ -23,7 +23,7 @@
                 <p>Organizations</p>
             </div>
             <div class="org-content">
-                <a class="btn btn-info" href="{{ route('organizations') }}">See More</a>
+                <a class="btn btn-info" href="{{ route('admin.organizations') }}">See More</a>
             </div>
         </div>
         <div class="events">

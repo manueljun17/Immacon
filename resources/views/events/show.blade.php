@@ -22,6 +22,6 @@
 	<article>
 	 {!! $events->body !!}
 	</article>
-    <a class="btn btn-warning form-control" href="{{ route('events.edit',array($events->id)) }}">Edit</a>
-	<a class="btn btn-info form-control" href="{{ route('events') }}">Back</a>
+    <a class="btn btn-warning form-control" href="{{ route('admin.events.edit',array($events->id)) }}">Edit</a>
+	<a class="btn btn-info form-control" href="{{ route('admin.events') }}">Back</a>
 @stop

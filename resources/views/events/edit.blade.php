@@ -2,7 +2,7 @@
 
 @section('content')
 	<h1>Edit: {!! $events->name !!} </h1>
-	{!! Form::model($events,['method'=>'PATCH','route'=>['events.update', $events->id],'files' => true]) !!}
+	{!! Form::model($events,['method'=>'PATCH','route'=>['admin.events.update', $events->id],'files' => true]) !!}
 
 		@include('events.form', ['submitButtonText'=>'Update Events'])
 

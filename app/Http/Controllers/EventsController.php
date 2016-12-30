@@ -24,12 +24,45 @@ class EventsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $events = Event::latest('created_at')->get();
-    	return view('events.index',compact('events'));
+        $events = Event::where(function($query) use ($request) {
+            //filter by keyword entered
+            if( ( $term = $request->get('term') ) ) {
+                $query->where('title', 'like', '%' . $term . '%');
+                $query->orWhere('event_date', 'like', '%' . $term . '%');
+                $query->orWhere('event_location', 'like', '%' . $term . '%');
+            }
+        })
+        ->orderBy('id', 'desc')
+        ->latest('created_at')
+        ->paginate(10);
+        return view('events.index', compact('events'));
     }
+    public function autocomplete(Request $request)
+    {
+        //Prevent this method called by non ajax
+        if($request->ajax())
+        {
+            $events = Event::where(function($query) use ($request) {
+                //filter by keyword entered
+                if( ( $term = $request->get('term') ) ) {
+                    $query->where('title', 'like', '%' . $term . '%');
+                    $query->orWhere('event_date', 'like', '%' . $term . '%');
+                    $query->orWhere('event_location', 'like', '%' . $term . '%');
+                }
+            })
+            ->orderBy('id', 'desc')
+            ->take(5)
+            ->get();
 
+        //Convert to json
+        foreach ($events as $event) {
+          $results[] = ['id' => $event->id, 'value' => $event->title];
+        }
+        return response()->json($results);
+        }
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -51,7 +84,7 @@ class EventsController extends Controller
         
         $validator = Validator::make($request->all(), $this->validator());
         if($validator->fails()){
-        return Redirect::route('events.create')
+        return Redirect::route('admin.events.create')
         ->withErrors($validator)
         ->withInput();
         }
@@ -65,7 +98,7 @@ class EventsController extends Controller
             'end_time' => $request->get('end_time') 
         ]);
         
-        return redirect('events');  
+        return Redirect::route('admin.events');
     }
 
     /**
@@ -103,7 +136,7 @@ class EventsController extends Controller
     {
         $validator = Validator::make($request->all(), $this->validator());
         if($validator->fails()){
-        return Redirect::route('events.create')
+        return Redirect::route('admin.events.create')
         ->withErrors($validator)
         ->withInput();
         }
@@ -117,7 +150,7 @@ class EventsController extends Controller
             'end_time' => $request->get('end_time') 
         ]);
         
-        return redirect('events');
+        return Redirect::route('admin.events');
     }
 
     /**
@@ -130,7 +163,7 @@ class EventsController extends Controller
     {
         $events = Event::find($id);
         $events->delete();
-        return Redirect::route('events');
+        return Redirect::route('admin.events');
     }
     /**
      * Get Rules

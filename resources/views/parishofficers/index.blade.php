@@ -2,8 +2,8 @@
 @section('content')
 <div>
 <h1>Parish Officers</h1>
-<a class="btn btn-info" href="{{ route('parishofficers.create') }}">Add Parish Officer</a>
-{!! Form::open(['route' => 'parishofficers', 'method' => 'GET', 'class' => 'navbar-form navbar-right', 'role' => 'search']) !!}
+<a class="btn btn-info" href="{{ route('admin.parishofficers.create') }}">Add Parish Officer</a>
+{!! Form::open(['route' => 'admin.parishofficers', 'method' => 'GET', 'class' => 'navbar-form navbar-right', 'role' => 'search']) !!}
 
 <div class="input-group">
     {!! Form::text('term', Request::get('term'), ['class' => 'form-control', 'placeholder' => 'Search...', 'id' => 'term']) !!}              
@@ -40,12 +40,12 @@
                     <td>{{ $parishofficer->position }}</td>
                     <td>{{ $parishofficer->description }}</td>
                     <td>
-                        <a class="btn btn-info" href="{{ route('parishofficers.show',array($parishofficer->id)) }}">Show</a>
+                        <a class="btn btn-info" href="{{ route('admin.parishofficers.show',array($parishofficer->id)) }}">Show</a>
                     </td>
                     <td>
-                        <a class="btn btn-success" href="{{ route('parishofficers.edit',array($parishofficer->id)) }}">Edit</a>
+                        <a class="btn btn-success" href="{{ route('admin.parishofficers.edit',array($parishofficer->id)) }}">Edit</a>
                     </td>
-                    <td>{{ Form::open(array('route' => array('parishofficers.destroy', $parishofficer->id), 'method' => 'delete')) }}
+                    <td>{{ Form::open(array('route' => array('admin.parishofficers.destroy', $parishofficer->id), 'method' => 'delete')) }}
                             <button type="submit" class="btn btn-danger" onclick="return confirm('Do you really want to delete the information?')">Delete</button>
                         {{ Form::close() }}</td>
                 </tr>
@@ -54,10 +54,10 @@
       
     </table>
     <div class="text-center">
-    <nav>
-      {!! $parishofficers->appends( Request::query() )->render() !!}
-    </nav>
-  </div>
+        <nav>
+        {!! $parishofficers->appends( Request::query() )->render() !!}
+        </nav>
+    </div>
 @else
     There are no Parish Officers info
 @endif
