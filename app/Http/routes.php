@@ -15,26 +15,7 @@ Route::group(['middleware' => 'web'], function () {
  
     Route::get('/', 'HomeController@index')->name('main');
     
-    //About
     
-    Route::get('/about', [
-        'uses' => 'AboutController@index',
-        'as' => 'about',
-        'middleware' => 'roles',
-        'roles' => ['Admin']
-    ]);
-    Route::get('/about/{about}/edit', [
-        'uses' => 'AboutController@edit',
-        'as' => 'about.edit',
-        'middleware' => 'roles',
-        'roles' => ['Admin']
-    ]);
-    Route::patch('/about/{about}', [
-        'uses' => 'AboutController@update',
-        'as' => 'about.update',
-        'middleware' => 'roles',
-        'roles' => ['Admin']
-    ]);
 
       
 });
@@ -224,6 +205,25 @@ Route::delete('/admin/users/{users}', [
 Route::get('/admin/users/{users}/edit', [
     'uses' => 'UsersController@edit',
     'as' => 'admin.users.edit',
+    'middleware' => 'roles',
+    'roles' => ['Admin']
+]);
+//About
+Route::get('/admin/about', [
+    'uses' => 'AboutController@index',
+    'as' => 'admin.about',
+    'middleware' => 'roles',
+    'roles' => ['Admin']
+]);
+Route::get('/admin/about/{about}/edit', [
+    'uses' => 'AboutController@edit',
+    'as' => 'admin.about.edit',
+    'middleware' => 'roles',
+    'roles' => ['Admin']
+]);
+Route::patch('/admin/about/{about}', [
+    'uses' => 'AboutController@update',
+    'as' => 'admin.about.update',
     'middleware' => 'roles',
     'roles' => ['Admin']
 ]);

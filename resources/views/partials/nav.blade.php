@@ -29,7 +29,7 @@
                         <li><a href="/parishofficers">Parish Officers</a></li>
                         <li><a href="/organizations">Organizations</a></li>
                         <li><a href="/events">Events</a></li>
-                        <li><a href="/about">About</a></li>
+                        <li><a href="/admin/about">About</a></li>
                         <li><a href="/admin/users">Users</a></li>
                         <li><a href="/logout">Logout</a></li>
                     </ul>

@@ -2,7 +2,7 @@
 
 @section('content')
 <h1>Edit About</h1>
-{{ Form::model($about, array('method' => 'PATCH', 'route' => array('about.update', $about->id))) }}
+{{ Form::model($about, array('method' => 'PATCH', 'route' => array('admin.about.update', $about->id))) }}
     <ul>
         <li>
             {{ Form::label('mission', 'Mission:') }}
@@ -26,7 +26,7 @@
         </li>
         <li>
             {{ Form::submit('Update', array('class' => 'btn btn-info')) }}
-            <a class="btn btn-success" href="{{ route('about') }}">Back</a>
+            <a class="btn btn-success" href="{{ route('admin.about') }}">Back</a>
         </li>
     </ul>
 {{ Form::close() }}

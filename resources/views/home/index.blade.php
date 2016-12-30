@@ -16,7 +16,7 @@
             <div class="mv-content">
                 <p>{{ $about->vision}}</p>
             </div>
-            <a class="btn btn-info" href="{{ route('about') }}">See More</a>
+            <a class="btn btn-info" href="{{ route('admin.about') }}">See More</a>
         </div> 
         <div class="organizations">
             <div class="org-header">

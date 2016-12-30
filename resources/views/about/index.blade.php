@@ -26,7 +26,7 @@
                     <td>{{ $about->location }}</td>
                     <td>{{ $about->bank_account }}</td>
                     <td>{{ $about->email_account }}</td>
-                    <td><a class="btn btn-info" href="{{ route('about.edit',array($about->id)) }}">Edit</a></td>
+                    <td><a class="btn btn-info" href="{{ route('admin.about.edit',array($about->id)) }}">Edit</a></td>
                 </tr>
             @endforeach
         </tbody>

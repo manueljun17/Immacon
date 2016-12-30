@@ -60,9 +60,9 @@ class AboutController extends Controller
         {
             $about = About::find($id);
             $about->update($input);
-            return Redirect::route('about');
+            return Redirect::route('admin.about');
         }
-        return Redirect::route('about.edit', $id)
+        return Redirect::route('admin.about.edit', $id)
             ->withInput();
     }
 
