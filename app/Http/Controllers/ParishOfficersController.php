@@ -79,7 +79,7 @@ class ParishOfficersController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Parishofficers $parishofficers, Request $request)
+    public function store( Request $request )
     {
         $rules = [
             'name' => 'required',
@@ -101,12 +101,13 @@ class ParishOfficersController extends Controller
         $filename= $mytime . $file->getClientOriginalName();
         $uploadSuccess = $request->file('user_image')
         ->move($destinationPath, $filename);
-        $parishofficers->create([
-            'name' => $request->get('name'),
-            'position' => $request->get('position'),
-            'description' => $request->get('description'),
-            'user_image' => $destinationPath . $filename 
-        ]);
+
+        $parishofficers = new ParishOfficers();
+        $parishofficers->name = $request->get('name');
+        $parishofficers->position = $request->get('position');
+        $parishofficers->description = $request->get('description');
+        $parishofficers->user_image = $destinationPath . $filename;
+        $parishofficers->save();
         $parishofficers->organizations()->sync($request->input('organization_list'));
         return Redirect::route('admin.parishofficers');
     }

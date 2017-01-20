@@ -74,7 +74,7 @@ class UsersController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store( User $users,Request $request)
+    public function store( Request $request)
     {
         $validator = Validator::make($request->all(), $this->validator());
         if($validator->fails()){
@@ -82,13 +82,13 @@ class UsersController extends Controller
             ->withErrors($validator)
             ->withInput();
         }
-        $users->create([
-            'first_name' => $request->get('first_name'),
-            'last_name' => $request->get('last_name'),
-            'email' => $request->get('email'),
-            'password' =>  bcrypt($request->get('password')),
-        ]);
-        $users->roles()->sync($request->input('role_list'));
+        $user = new User();
+        $user->first_name = $request->get('first_name');
+        $user->last_name = $request->get('last_name');
+        $user->email = $request->get('email');
+        $user->password = bcrypt($request->get('password'));
+        $user->save();
+        $user->roles()->sync($request->input('role_list'));
         return Redirect::route('admin.users');
     }
 
@@ -137,6 +137,7 @@ class UsersController extends Controller
             'first_name' => $request->get('first_name'),
             'last_name' => $request->get('last_name')
         ]);
+        
         $users->roles()->sync($request->input('role_list'));
         return Redirect::route('admin.users');
     }
