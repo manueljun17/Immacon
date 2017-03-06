@@ -13,12 +13,22 @@
         
             position: relative;
             top:0;        
-            z-index:-1;  
+            z-index:9;  
         }
         .banner img {
             width:100%;        
             max-height:40vw;
         }
+        figure.main-content {
+            padding: 10px 0px;
+        }        
+        .mission-vision {
+            /* max-width: 50vh; */
+            padding: 50px;
+        }       
+        .mv-content {
+            text-align: justify;
+        }         
         @media all and ( max-width: 720px ) {
             .banner img {
                 max-height:70vw;
@@ -27,7 +37,8 @@
     
         /*-- Bootstrap -- */
         .navbar-inverse {
-            background-color:rgba(0, 0, 0, 0.46);
+            // background-color:rgba(0, 0, 0, 0.46);
+            background-color: rgba(7, 66, 109, 0.62);
         }
         .navbar-inverse .navbar-brand{
             color: #ffffff;
@@ -50,12 +61,41 @@
             text-align: center;
             background-color:#eee;
         }
+        .mini-box {
+        text-align: center;
+        background-color: #2f6c99; 
+        padding: 10px;
+        }
+
+        .mini-box .mv-header {
+            color: #fff;
+        }
+
+        .mini-box p {
+            color: #fff;
+        }
+           
         .mv-header{
             font-size: 3em; 
         }
         .mv-content{
             font-size: 1.3em;
         }
+
+        .info-box {
+            text-align: left;
+            padding: 5px;
+        }
+
+        .info-box-title {
+            padding:10px;
+            background: #333;
+            border-radius: 20px;
+            margin: 0px 0px 10px 0px;
+            font-size: 1.5em;
+            text-align: center;
+        }
+
         /*-- Parish Officers -- */
         .parish-officers .po-header{
             text-align: center;
@@ -66,10 +106,34 @@
         .po-content{
             font-size: 1.3em;
         }
+    
+        // Google Map
+        .gmap {
+        text-align: center;
+        background-color: #ccc;
+        border: 4px solid #6d6d6d;
+        border-radius: 5px;
+        }
+
         /*Footer*/
         .footer {
             width:100%;        
             max-height:50vw;
             background: #3c3c3c;
             color:white;
+            padding: 15px;
+            text-align: center;
+
         }
+
+        .footer-top {
+            width: 100%;
+            background: #7c7c7c;
+            background: #2f6c99;
+            color: white;
+            padding: 15px;
+            text-align: center;    
+            padding: 40px;
+            margin-top: 20px;            
+        }
+                
