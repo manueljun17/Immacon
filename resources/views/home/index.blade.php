@@ -16,14 +16,14 @@
             <div class="mv-content">
                 <p>{{ $about->vision}}</p>
             </div>
-            <a class="btn btn-info" href="{{ route('admin.about') }}">See More</a>
+            <a class="btn btn-info" href="{{ route('about') }}">See More</a>
         </div> 
         <div class="organizations">
             <div class="org-header">
                 <p>Organizations</p>
             </div>
             <div class="org-content">
-                <a class="btn btn-info" href="{{ route('admin.organizations') }}">See More</a>
+                <a class="btn btn-info" href="{{ route('organizations') }}">See More</a>
             </div>
         </div>
         <div class="events">
@@ -55,10 +55,10 @@
             </div>
         </div>    
     </figure>
-    <ul id="clock">	
+    <!--<ul id="clock">	
 	   	<li id="sec"></li>
 	   	<li id="hour"></li>
 		<li id="min"></li>
-	</ul>
+	</ul>-->
   
 @endsection

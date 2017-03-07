@@ -1,17 +1,4 @@
-@extends('layouts.about')
-@section('content')
-
-
-    @if( auth()->check())
-        @if( auth()->user()->hasRole('Admin'))
-            @include('about.admin.index')
-        @else
-            @include('about.user.index')
-        @endif
-    @else
-        @include('about.visitor.index')
-    @endif
-<!--@if ($abouts->count())
+@if ($abouts->count())
     <table class="table table-striped table-bordered">
         <thead>
             <tr>
@@ -42,5 +29,4 @@
     </table>
 @else
     There are no About info
-@endif-->
-@stop
+@endif

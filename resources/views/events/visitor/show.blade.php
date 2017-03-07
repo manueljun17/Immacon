@@ -19,4 +19,4 @@
 <article>
     {!! $events->body !!}
 </article>
-<a class="btn btn-info form-control" href="{{ route('events') }}">Back</a>
+<!--<a class="btn btn-info form-control" href="{{ route('events') }}">Back</a>-->
