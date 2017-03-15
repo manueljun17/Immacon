@@ -4,7 +4,7 @@
         @if( auth()->user()->hasRole('Admin'))
             @include('events.admin.index')
         @else
-            @include('events.user.index')
+            @include('events.visitor.index')
         @endif
     @else
         @include('events.visitor.index')

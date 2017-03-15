@@ -305,10 +305,43 @@ Route::get('/organizations/{organizations}/edit', [
 ]);
 
 
+
+//ParishOfficers
+Route::get('/parishofficers/autocomplete', [
+    'uses' => 'ParishofficersController@autocomplete', 
+    'as' => 'parishofficers.autocomplete'
+]);
+ Route::post('/parishofficers', [
+    'uses' => 'ParishofficersController@store',
+    'as' => 'parishofficers.store'
+]);
 Route::get('/parishofficers', [
     'uses' => 'ParishofficersController@index',
     'as' => 'parishofficers'
 ]);
+Route::get('/parishofficers/create', [
+    'uses' => 'ParishofficersController@create',
+    'as' => 'parishofficers.create'
+]);
+Route::get('/parishofficers/{parishofficers}', [
+    'uses' => 'ParishofficersController@show',
+    'as' => 'parishofficers.show'
+]); 
+Route::patch('/parishofficers/{parishofficers}', [
+    'uses' => 'ParishofficersController@update',
+    'as' => 'parishofficers.update'
+]);
+Route::delete('/parishofficers/{parishofficers}', [
+    'uses' => 'ParishofficersController@destroy',
+    'as' => 'parishofficers.destroy'
+]); 
+Route::get('/parishofficers/{parishofficers}/edit', [
+    'uses' => 'ParishofficersController@edit',
+    'as' => 'parishofficers.edit'
+]);
+
+
+////////
 
 //About
 Route::get('/about', [

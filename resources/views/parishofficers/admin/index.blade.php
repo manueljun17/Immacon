@@ -1,15 +1,4 @@
-@extends('layouts.parishofficer')
-@section('content')
-@if( auth()->check())
-    @if( auth()->user()->hasRole('Admin'))
-        @include('parishofficers.admin.index')
-    @else
-        @include('parishofficers.visitor.index')
-    @endif
-@else
-    @include('parishofficers.visitor.index')
-@endif
-<!--<div>
+<div>
 <h1>Parish Officers</h1>
 <a class="btn btn-info" href="{{ route('admin.parishofficers.create') }}">Add Parish Officer</a>
 {!! Form::open(['route' => 'admin.parishofficers', 'method' => 'GET', 'class' => 'navbar-form navbar-right', 'role' => 'search']) !!}
@@ -69,5 +58,4 @@
     </div>
 @else
     There are no Parish Officers info
-@endif-->
-@stop
+@endif

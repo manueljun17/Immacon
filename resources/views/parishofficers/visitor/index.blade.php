@@ -1,18 +1,6 @@
-@extends('layouts.parishofficer')
-@section('content')
-@if( auth()->check())
-    @if( auth()->user()->hasRole('Admin'))
-        @include('parishofficers.admin.index')
-    @else
-        @include('parishofficers.visitor.index')
-    @endif
-@else
-    @include('parishofficers.visitor.index')
-@endif
-<!--<div>
+<div>
 <h1>Parish Officers</h1>
-<a class="btn btn-info" href="{{ route('admin.parishofficers.create') }}">Add Parish Officer</a>
-{!! Form::open(['route' => 'admin.parishofficers', 'method' => 'GET', 'class' => 'navbar-form navbar-right', 'role' => 'search']) !!}
+{!! Form::open(['route' => 'parishofficers', 'method' => 'GET', 'class' => 'navbar-form navbar-right', 'role' => 'search']) !!}
 
 <div class="input-group">
     {!! Form::text('term', Request::get('term'), ['class' => 'form-control', 'placeholder' => 'Search...', 'id' => 'term']) !!}              
@@ -35,8 +23,6 @@
                 <th>Position</th>
                 <th>Description</th>
                 <th></th>
-                <th></th>
-                <th></th>
             </tr>
         </thead>
 
@@ -49,14 +35,8 @@
                     <td>{{ $parishofficer->position }}</td>
                     <td>{{ $parishofficer->description }}</td>
                     <td>
-                        <a class="btn btn-info" href="{{ route('admin.parishofficers.show',array($parishofficer->id)) }}">Show</a>
+                        <a class="btn btn-info" href="{{ route('parishofficers.show',array($parishofficer->id)) }}">Show</a>
                     </td>
-                    <td>
-                        <a class="btn btn-success" href="{{ route('admin.parishofficers.edit',array($parishofficer->id)) }}">Edit</a>
-                    </td>
-                    <td>{{ Form::open(array('route' => array('admin.parishofficers.destroy', $parishofficer->id), 'method' => 'delete')) }}
-                            <button type="submit" class="btn btn-danger" onclick="return confirm('Do you really want to delete the information?')">Delete</button>
-                        {{ Form::close() }}</td>
                 </tr>
             @endforeach
         </tbody>
@@ -69,5 +49,4 @@
     </div>
 @else
     There are no Parish Officers info
-@endif-->
-@stop
+@endif

@@ -8,5 +8,9 @@
 	<article>
 		<h4>Description: {{ $parishofficers->description }}</h4>
 	</article>
-	<a class="btn btn-info" href="{{ route('admin.parishofficers') }}">Back</a>
+	@if( auth()->check())
+		@if( auth()->user()->hasRole('Admin'))
+			<a class="btn btn-info" href="{{ route('admin.parishofficers') }}">Back</a>
+		@endif
+	@endif
 @stop

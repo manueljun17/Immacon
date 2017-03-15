@@ -1,32 +1,35 @@
 @if ($abouts->count())
-    <table class="table table-striped table-bordered">
-        <thead>
-            <tr>
-                <th>Mission</th>
-                <th>Vision</th>
-                <th>History</th>
-                <th>Location</th>
-                <th>Bank Account</th>
-                <th>Email Account</th>
-                <th>Action</th>
-            </tr>
-        </thead>
+@foreach ($abouts as $about)
+    <div class="mission">
+    <h1>Mission</h1>
+    {{ $about->mission }}
+    </div>
+    <div class="vision">
+    <h1>Vision</h1>
+    {{ $about->vision }}
+    </div>
+    <div class="history">
+    <h1>History</h1>
+        {{ $about->history }}
+    </div>
+    <div class="location">
+    <h1>Location</h1>
+    {{ $about->location }}
+    </div>
+    <div class="bank-account">
+    <h1>Bank Account</h1>
+        {{ $about->bank_account }}
+    </div>
+    <div class="email-account">
+    <h1>Email</h1>
+    {{ $about->email_account }}
+    </div>
 
-        <tbody>
-            @foreach ($abouts as $about)
-                <tr>
-                    <td>{{ $about->mission }}</td>
-                    <td>{{ $about->vision }}</td>
-                    <td>{{ $about->history }}</td>
-                    <td>{{ $about->location }}</td>
-                    <td>{{ $about->bank_account }}</td>
-                    <td>{{ $about->email_account }}</td>
-                    <td><a class="btn btn-info" href="{{ route('admin.about.edit',array($about->id)) }}">Edit</a></td>
-                </tr>
-            @endforeach
-        </tbody>
-      
-    </table>
+
+
+
+
+@endforeach
 @else
-    There are no About info
+    There are no information on About.
 @endif

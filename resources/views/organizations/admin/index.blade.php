@@ -1,15 +1,4 @@
-@extends('layouts.organizations')
-@section('content')
-@if( auth()->check())
-    @if( auth()->user()->hasRole('Admin'))
-        @include('organizations.admin.index')
-    @else
-        @include('organizations.visitor.index')
-    @endif
-@else
-    @include('organizations.visitor.index')
-@endif
-<!--
+
 <div>
 <h1>Organizations</h1>
 <a class="btn btn-info" href="{{ route('admin.organizations.create') }}">Add Organizations</a>
@@ -66,5 +55,4 @@
   </div>
 @else
     There are no Organizations info
-@endif-->
-@stop
+@endif
