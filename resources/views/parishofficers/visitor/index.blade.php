@@ -11,6 +11,20 @@
 </div>
 {!! Form::close() !!}
 </div>
+@if ($parishofficers->count())
+    @foreach ($parishofficers as $parishofficer)
+
+        <div class="card" style="width: 20rem;">
+        <img class="card-img-top" src="{{ asset($parishofficer->user_image)}}" alt="Parish Officer Image"  width="100%" height="auto">
+        <div class="card-block">
+            <h4 class="card-title">{{ $parishofficer->name }}</h4>
+            <h5 class="card-title">{{ $parishofficer->position }}</h5>
+            <p class="card-text">{{ $parishofficer->description }}</p>
+            <a href="{{ route('parishofficers.show',array($parishofficer->id)) }}" class="btn btn-info">Show</a>
+        </div>
+        </div>
+    @endforeach
+@endif
 
 @if ($parishofficers->count())
     <table class="table table-striped table-bordered">

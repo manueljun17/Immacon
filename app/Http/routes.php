@@ -241,68 +241,71 @@ Route::get('/events/autocomplete', [
     'uses' => 'EventsController@autocomplete', 
     'as' => 'events.autocomplete'
 ]);
-Route::post('/events', [
-    'uses' => 'EventsController@store',
-    'as' => 'events.store'
-]);
-Route::get('/events', [
-    'uses' => 'EventsController@index',
-    'as' => 'events'
-]);
-Route::get('/events/create', [
-    'uses' => 'EventsController@create',
-    'as' => 'events.create'
-]);
+
 Route::get('/events/{events}', [
     'uses' => 'EventsController@show',
     'as' => 'events.show'
 ]); 
-Route::patch('/events/{events}', [
-    'uses' => 'EventsController@update',
-    'as' => 'events.update'
+Route::get('/events', [
+    'uses' => 'EventsController@index',
+    'as' => 'events'
 ]);
-Route::delete('/events/{events}', [
-    'uses' => 'EventsController@destroy',
-    'as' => 'events.destroy'
-]); 
-Route::get('/events/{events}/edit', [
-    'uses' => 'EventsController@edit',
-    'as' => 'events.edit'
-]);
+// Route::get('/events/create', [
+//     'uses' => 'EventsController@create',
+//     'as' => 'events.create'
+// ]);
+// Route::post('/events', [
+//     'uses' => 'EventsController@store',
+//     'as' => 'events.store'
+// ]);
+// Route::patch('/events/{events}', [
+//     'uses' => 'EventsController@update',
+//     'as' => 'events.update'
+// ]);
+// Route::delete('/events/{events}', [
+//     'uses' => 'EventsController@destroy',
+//     'as' => 'events.destroy'
+// ]); 
+// Route::get('/events/{events}/edit', [
+//     'uses' => 'EventsController@edit',
+//     'as' => 'events.edit'
+// ]);
 
 //Organizations
 Route::get('/organizations/autocomplete', [
     'uses' => 'OrganizationsController@autocomplete', 
     'as' => 'organizations.autocomplete'
 ]);
-Route::post('/organizations', [
-    'uses' => 'OrganizationsController@store',
-    'as' => 'organizations.store'
-]);
 Route::get('/organizations', [
     'uses' => 'OrganizationsController@index',
     'as' => 'organizations'
-]);
-Route::get('/organizations/create', [
-    'uses' => 'OrganizationsController@create',
-    'as' => 'organizations.create'
 ]);
 Route::get('/organizations/{organizations}', [
     'uses' => 'OrganizationsController@show',
     'as' => 'organizations.show'
 ]); 
-Route::patch('/organizations/{organizations}', [
-    'uses' => 'OrganizationsController@update',
-    'as' => 'organizations.update'
-]);
-Route::delete('/organizations/{organizations}', [
-    'uses' => 'OrganizationsController@destroy',
-    'as' => 'organizations.destroy'
-]); 
-Route::get('/organizations/{organizations}/edit', [
-    'uses' => 'OrganizationsController@edit',
-    'as' => 'organizations.edit'
-]);
+// Route::post('/organizations', [
+//     'uses' => 'OrganizationsController@store',
+//     'as' => 'organizations.store'
+// ]);
+
+// Route::get('/organizations/create', [
+//     'uses' => 'OrganizationsController@create',
+//     'as' => 'organizations.create'
+// ]);
+
+// Route::patch('/organizations/{organizations}', [
+//     'uses' => 'OrganizationsController@update',
+//     'as' => 'organizations.update'
+// ]);
+// Route::delete('/organizations/{organizations}', [
+//     'uses' => 'OrganizationsController@destroy',
+//     'as' => 'organizations.destroy'
+// ]); 
+// Route::get('/organizations/{organizations}/edit', [
+//     'uses' => 'OrganizationsController@edit',
+//     'as' => 'organizations.edit'
+// ]);
 
 
 
@@ -311,34 +314,36 @@ Route::get('/parishofficers/autocomplete', [
     'uses' => 'ParishofficersController@autocomplete', 
     'as' => 'parishofficers.autocomplete'
 ]);
- Route::post('/parishofficers', [
-    'uses' => 'ParishofficersController@store',
-    'as' => 'parishofficers.store'
-]);
 Route::get('/parishofficers', [
     'uses' => 'ParishofficersController@index',
     'as' => 'parishofficers'
-]);
-Route::get('/parishofficers/create', [
-    'uses' => 'ParishofficersController@create',
-    'as' => 'parishofficers.create'
 ]);
 Route::get('/parishofficers/{parishofficers}', [
     'uses' => 'ParishofficersController@show',
     'as' => 'parishofficers.show'
 ]); 
-Route::patch('/parishofficers/{parishofficers}', [
-    'uses' => 'ParishofficersController@update',
-    'as' => 'parishofficers.update'
-]);
-Route::delete('/parishofficers/{parishofficers}', [
-    'uses' => 'ParishofficersController@destroy',
-    'as' => 'parishofficers.destroy'
-]); 
-Route::get('/parishofficers/{parishofficers}/edit', [
-    'uses' => 'ParishofficersController@edit',
-    'as' => 'parishofficers.edit'
-]);
+//  Route::post('/parishofficers', [
+//     'uses' => 'ParishofficersController@store',
+//     'as' => 'parishofficers.store'
+// ]);
+
+
+// Route::get('/parishofficers/create', [
+//     'uses' => 'ParishofficersController@create',
+//     'as' => 'parishofficers.create'
+// ]);
+// Route::patch('/parishofficers/{parishofficers}', [
+//     'uses' => 'ParishofficersController@update',
+//     'as' => 'parishofficers.update'
+// ]);
+// Route::delete('/parishofficers/{parishofficers}', [
+//     'uses' => 'ParishofficersController@destroy',
+//     'as' => 'parishofficers.destroy'
+// ]); 
+// Route::get('/parishofficers/{parishofficers}/edit', [
+//     'uses' => 'ParishofficersController@edit',
+//     'as' => 'parishofficers.edit'
+// ]);
 
 
 ////////
