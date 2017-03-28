@@ -16,6 +16,11 @@ Route::group(['middleware' => 'web'], function () {
 });
 //Auth    
 Route::auth();
+//Admin
+Route::get('/admin', [
+    'uses' => 'Auth\AuthController@login',
+    'as' => 'admin'
+]);
 //ParishOfficers
 Route::get('/admin/parishofficers/autocomplete', [
     'uses' => 'ParishofficersController@autocomplete', 
