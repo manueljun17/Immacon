@@ -15,7 +15,8 @@
 <div class="container">
 	@yield('content')
 </div>
-	<script src="https://code.jquery.com/jquery.js"></script>
+	<script src="{{ URL::to('src/js/jquery/jquery.js') }}"></script>
+	<script src="{{ URL::to('src/js/tether/tether.js') }}"></script>
 	<script src="{{ URL::to('src/bootstrap/js/bootstrap.min.js') }}"></script>
 	<script src="{{ URL::to('src/js/jqueryui/jquery-ui.min.js') }}"></script>
 	<script src="{!! elixir('js/clock.js') !!}"></script>
