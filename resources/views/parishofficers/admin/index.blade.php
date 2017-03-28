@@ -7,7 +7,7 @@
     {!! Form::text('term', Request::get('term'), ['class' => 'form-control', 'placeholder' => 'Search...', 'id' => 'term']) !!}              
     <span class="input-group-btn">
     <button class="btn btn-default" type="submit">
-        <i class="glyphicon glyphicon-search"></i>
+        <i class="fa fa-search"></i>
     </button>
     </span>
 </div>

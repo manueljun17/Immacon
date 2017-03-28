@@ -2,12 +2,13 @@
 <html>
 <head>
 	<title>ImmaconAngelesCiityPH</title>
-	<link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
 	<link rel="stylesheet" type="text/css" href="{{ URL::to('src/bootstrap/css/bootstrap.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{!! elixir('css/app.css') !!}">
 	<link rel="stylesheet" type="text/css" href="{!! elixir('css/clock.css') !!}">
 	<link href="{{ URL::to('src/js/jqueryui/jquery-ui.min.css') }}" rel="stylesheet">
     <link href="{{ URL::to('src/js/jqueryui/jquery-ui.theme.min.css') }}" rel="stylesheet">
+	<!-- Fonts -->
+    <link rel="stylesheet" type="text/css" href="{{ URL::to('src/fa/css/font-awesome.css') }}">
 </head>
 <body>
 	@include('partials.nav')

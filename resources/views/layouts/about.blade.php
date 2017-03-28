@@ -5,6 +5,7 @@
 	<link rel="stylesheet" type="text/css" href="{{ URL::to('src/bootstrap/css/bootstrap.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{!! elixir('css/app.css') !!}">
 	<link rel="stylesheet" type="text/css" href="{!! elixir('css/clock.css') !!}">
+	<link rel="stylesheet" type="text/css" href="{{ URL::to('src/fa/css/font-awesome.css') }}">
 </head>
 <body>
 	@include('partials.nav')
