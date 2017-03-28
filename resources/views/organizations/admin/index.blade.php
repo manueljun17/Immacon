@@ -2,7 +2,7 @@
 <div>
 <h1>Organizations</h1>
 <a class="btn btn-info" href="{{ route('admin.organizations.create') }}">Add Organizations</a>
-{!! Form::open(['route' => 'admin.organizations', 'method' => 'GET', 'class' => 'navbar-form navbar-right', 'role' => 'search']) !!}
+{!! Form::open(['route' => 'admin.organizations', 'method' => 'GET', 'class' => 'form-inline', 'role' => 'search']) !!}
 
 <div class="input-group">
     {!! Form::text('term', Request::get('term'), ['class' => 'form-control', 'placeholder' => 'Search...', 'id' => 'term']) !!}              

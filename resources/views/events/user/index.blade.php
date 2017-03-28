@@ -1,7 +1,7 @@
 <div>
 <h1>Events</h1>
 <a class="btn btn-info" href="{{ route('events.create') }}">Add Event</a>
-{!! Form::open(['route' => 'events', 'method' => 'GET', 'class' => 'navbar-form navbar-right', 'role' => 'search']) !!}
+{!! Form::open(['route' => 'events', 'method' => 'GET', 'class' => 'form-inline', 'role' => 'search']) !!}
 <div class="input-group">
     {!! Form::text('term', Request::get('term'), ['class' => 'form-control', 'placeholder' => 'Search...', 'id' => 'term']) !!}              
     <span class="input-group-btn">

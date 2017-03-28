@@ -1,7 +1,7 @@
 <div>
 <h1>Parish Officers</h1>
 <a class="btn btn-info" href="{{ route('admin.parishofficers.create') }}">Add Parish Officer</a>
-{!! Form::open(['route' => 'admin.parishofficers', 'method' => 'GET', 'class' => 'navbar-form navbar-right', 'role' => 'search']) !!}
+{!! Form::open(['route' => 'admin.parishofficers', 'method' => 'GET', 'class' => 'form-inline', 'role' => 'search']) !!}
 
 <div class="input-group">
     {!! Form::text('term', Request::get('term'), ['class' => 'form-control', 'placeholder' => 'Search...', 'id' => 'term']) !!}              

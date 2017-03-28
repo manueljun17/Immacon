@@ -1,6 +1,6 @@
 <div>
 <h1>Parish Officers</h1>
-{!! Form::open(['route' => 'parishofficers', 'method' => 'GET', 'class' => 'navbar-form navbar-right', 'role' => 'search']) !!}
+{!! Form::open(['route' => 'parishofficers', 'method' => 'GET', 'class' => 'form-inline', 'role' => 'search']) !!}
 
 <div class="input-group">
     {!! Form::text('term', Request::get('term'), ['class' => 'form-control', 'placeholder' => 'Search...', 'id' => 'term']) !!}              
