@@ -12,6 +12,19 @@
 </div>
 
 @if ($events->count())
+    @foreach ($events as $event)
+        <div class="card" style="width: 20rem;">
+            <?php {{ preg_match('/<img.+src=[\'"](?P<src>.+?)[\'"].*>/i', $event->body, $image); }} ?>
+            <img class="card-img-top" src="{{ asset( $image['src']) }}" alt="Events Image"  width="100%" height="auto">
+            <div class="card-block">
+                <h4 class="card-title">{{ $event->title }}</h4>
+                <h5 class="card-title">{{ $event->event_location }}</h5>
+                <p class="card-text">{{ $event->event_date }}</p>
+                <a href="{{ route('events.show',array($event->id)) }}" class="btn btn-info">Show</a>
+            </div>
+        </div>
+    @endforeach
+
     <table class="table table-striped table-bordered">
         <thead>
             <tr>
