@@ -15,10 +15,31 @@ Route::group(['middleware' => 'web'], function () {
     Route::get('/', 'HomeController@index')->name('main');
 });
 //Auth    
-Route::auth();
+// Route::auth();
+Route::get('/login', [
+    'uses' => 'Auth\AuthController@showLoginForm',
+    'as' => 'login.show'
+]);
+Route::post('/login', [
+    'uses' => 'Auth\AuthController@login',
+    'as' => 'login'
+]);
+Route::get('/logout', [
+    'uses' => 'Auth\AuthController@logout',
+    'as' => 'logout'
+]);
+Route::post('/register', [
+    'uses' => 'Auth\AuthController@register',
+    'as' => 'register'
+]);
+Route::get('/register', [
+    'uses' => 'Auth\AuthController@showRegistrationForm',
+    'as' => 'register.show'
+]);
+
 //Admin
 Route::get('/admin', [
-    'uses' => 'Auth\AuthController@login',
+    'uses' => 'Auth\AuthController@showLoginForm',
     'as' => 'admin'
 ]);
 //ParishOfficers
