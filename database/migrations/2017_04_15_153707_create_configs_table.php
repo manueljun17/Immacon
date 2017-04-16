@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateAboutTable extends Migration
+class CreateConfigsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,11 +12,10 @@ class CreateAboutTable extends Migration
      */
     public function up()
     {
-        Schema::create('abouts', function (Blueprint $table) {
+        Schema::create('configs', function (Blueprint $table) {
             $table->increments('id');
-            $table->text('mission');
-            $table->text('vision');
-            $table->text('history');
+            $table->string('key', 255);
+            $table->text('value');
             $table->timestamps();
         });
     }
@@ -28,6 +27,6 @@ class CreateAboutTable extends Migration
      */
     public function down()
     {
-        Schema::drop('abouts');
+        Schema::drop('configs');
     }
 }

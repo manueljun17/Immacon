@@ -17,14 +17,6 @@
             {{ Form::textarea('history') }}
         </li>
         <li>
-            {{ Form::label('bank_account', 'Bank Account:') }}
-            {{ Form::text('bank_account') }}
-        </li>
-        <li>
-            {{ Form::label('email_account', 'Email:') }}
-            {{ Form::text('email_account') }}
-        </li>
-        <li>
             {{ Form::submit('Update', array('class' => 'btn btn-info')) }}
             <a class="btn btn-success" href="{{ route('admin.about') }}">Back</a>
         </li>

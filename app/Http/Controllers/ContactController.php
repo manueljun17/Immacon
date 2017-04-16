@@ -2,20 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\About;
-
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+
+use App\Contact;
 
 use Validator;
 
 use Illuminate\Support\Facades\Redirect;
 
-class AboutController extends Controller
+class ContactController extends Controller
 {
-    
-   
     /**
      * Display a listing of the resource.
      *
@@ -23,10 +21,9 @@ class AboutController extends Controller
      */
     public function index()
     {
-        $abouts = About::all();
-        return view('about.index', compact('abouts'));
+        $contact = Contact::all();
+        return view('contact.index', compact('contact'));
     }
-
 
     /**
      * Show the form for editing the specified resource.
@@ -36,12 +33,12 @@ class AboutController extends Controller
      */
     public function edit($id)
     {
-        $about = About::find($id);
-        if (is_null($about))
+        $contact = Contact::find($id);
+        if (is_null($contact))
         {
-            return redirect('about');
+            return redirect('contact');
         }
-        return view('about.edit', compact('about'));
+        return view('contact.edit', compact('contact'));
     }
 
     /**
@@ -54,14 +51,15 @@ class AboutController extends Controller
     public function update(Request $request, $id)
     {
         $input = $request->all();
-        $validation = Validator::make($input, About::$rules);
+        $validation = Validator::make($input, Contact::$rules);
         if ($validation->passes())
         {
-            $about = About::find($id);
-            $about->update($input);
-            return Redirect::route('admin.about');
+            $contact = Contact::find($id);
+            $contact->update($input);
+            return Redirect::route('admin.contact');
         }
-        return Redirect::route('admin.about.edit', $id)
+        return Redirect::route('admin.contact.edit', $id)
         ->withInput();
     }
+
 }

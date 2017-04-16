@@ -9,14 +9,12 @@ class About extends Model
     protected $fillable = [
     	'mission',
     	'vision',
-    	'history',
-        'location',
-        'bank_account',
-        'email_account'
+    	'history'
     ];
     public static $rules = array(
-        'bank_account' => 'required|numeric',
-        'email_account' => 'required|email'
+        'mission' => 'required',
+        'vision' => 'required',
+        'history' => 'required'
     );
 
 }
