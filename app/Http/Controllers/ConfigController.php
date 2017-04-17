@@ -8,6 +8,9 @@ use App\Http\Requests;
 
 use App\Config;
 
+use Validator;
+
+use Illuminate\Support\Facades\Redirect;
 class ConfigController extends Controller
 {
     /**
@@ -15,7 +18,7 @@ class ConfigController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         $configs = Config::where(function($query) use ($request) {
             //filter by keyword entered
@@ -27,7 +30,7 @@ class ConfigController extends Controller
         })
         ->orderBy('id', 'desc')
         ->paginate(10);
-        return view('configs.index', compact('configs'));
+        return view('config.index', compact('configs'));
     }
     public function autocomplete(Request $request)
     {
@@ -59,7 +62,7 @@ class ConfigController extends Controller
      */
     public function create()
     {
-        return view('configs.create');
+        return view('config.create');
     }
 
     /**
@@ -68,7 +71,7 @@ class ConfigController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store( Configs $configs, Request $request)
+    public function store( Config $configs, Request $request)
     {
         $validator = Validator::make($request->all(), $this->validator());
         if($validator->fails()){
@@ -91,8 +94,8 @@ class ConfigController extends Controller
      */
     public function show($id)
     {
-        $configs = Configs::find($id);
-        return view('configs.show',compact('configs'));
+        $configs = Config::find($id);
+        return view('config.show',compact('configs'));
     }
 
     /**
@@ -103,8 +106,8 @@ class ConfigController extends Controller
      */
     public function edit($id)
     {
-        $configs = Configs::find($id);
-        return view('configs.edit',compact('configs'));
+        $configs = Config::find($id);
+        return view('config.edit',compact('configs'));
     }
 
     /**

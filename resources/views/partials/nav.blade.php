@@ -15,7 +15,8 @@
                         <li class="nav-item"><a  class="nav-link" href="/events">Events</a></li>
                         <li class="nav-item"><a  class="nav-link" href="/organizations">Organizations</a></li>
                         <li class="nav-item"><a  class="nav-link" href="/parishofficers">Parish Officers</a></li>
-                        <li class="nav-item"><a  class="nav-link" href="/about">About</a></li>   
+                        <li class="nav-item"><a  class="nav-link" href="/about">About</a></li>
+                        <li class="nav-item"><a  class="nav-link" href="/contact">Contact Us</a></li>   
                         <li class="nav-item"><a  class="nav-link" href="/login">Login</a></li>
                         <li class="nav-item"><a  class="nav-link" href="/register">Register</a></li>
                     </ul>
@@ -26,6 +27,8 @@
                             <li class="nav-item"><a  class="nav-link" href="/admin/organizations">Organizations</a></li>
                             <li class="nav-item"><a  class="nav-link" href="/admin/events">Events</a></li>
                             <li class="nav-item"><a  class="nav-link" href="/admin/about">About</a></li>
+                            <li class="nav-item"><a  class="nav-link" href="/admin/contact">Contact Us</a></li>
+                            <li class="nav-item"><a  class="nav-link" href="/admin/configs">Config</a></li>
                             <li class="nav-item"><a  class="nav-link" href="/admin/users">Users</a></li>
                             <li class="nav-item"><a  class="nav-link" href="/logout">Logout</a></li>
                         </ul>

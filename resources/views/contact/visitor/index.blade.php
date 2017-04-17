@@ -13,6 +13,7 @@
     <h1>Address</h1>
         {{ $contact->address }}
     </div>
+    <div>
     <h1>Email</h1>
     {{ $contact->email_address }}
     </div>

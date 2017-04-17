@@ -59,7 +59,7 @@
 	<script>
         $(function() {
             $("#term").autocomplete({
-            source: "{{ route('admin.config.autocomplete') }}",
+            source: "{{ route('admin.configs.autocomplete') }}",
             minLength: 3,
             select: function(config, ui) {
                 $("#term").val(ui.item.value);

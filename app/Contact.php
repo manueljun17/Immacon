@@ -10,7 +10,7 @@ class Contact extends Model
     	'cell_number',
     	'phone_number',
         'address',
-    	'email_account',
+    	'email_address',
         'account_name',
     	'account_number'
     ];
@@ -18,7 +18,7 @@ class Contact extends Model
         'cell_number' => 'required',
         'phone_number' => 'required',
         'address' => 'required',
-        'email_account' => 'required',
+        'email_address' => 'required',
         'account_name' => 'required',
         'account_number' => 'required'
     );

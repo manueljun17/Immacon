@@ -19,7 +19,6 @@
             <tr>
                 <th>ID</th>
                 <th>Key</th>
-                <th>Value</th>
                 <th></th>
                 <th></th>
                 <th></th>
@@ -31,7 +30,6 @@
                 <tr>
                     <td>{{ $config->id }}</td>
                     <td>{{ $config->key }}</td>
-                    <td>{{ $config->value }}</td>
                     <td>
                         <a class="btn btn-info" href="{{ route('admin.configs.show',array($config->id)) }}">Show</a>
                     </td>

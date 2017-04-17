@@ -181,49 +181,49 @@ Route::patch('/admin/contact/{contact}', [
 ]);
 
 //Config
-Route::get('/admin/config/autocomplete', [
-    'uses' => 'CofigController@autocomplete', 
-    'as' => 'admin.config.autocomplete'
+Route::get('/admin/configs/autocomplete', [
+    'uses' => 'ConfigController@autocomplete', 
+    'as' => 'admin.configs.autocomplete'
 ]);
-Route::post('/admin/config', [
-    'uses' => 'CofigController@store',
-    'as' => 'admin.config.store',
+Route::post('/admin/configs', [
+    'uses' => 'ConfigController@store',
+    'as' => 'admin.configs.store',
     'middleware' => 'roles',
     'roles' => ['Admin']
 ]);
-Route::get('/admin/config', [
-    'uses' => 'CofigController@index',
-    'as' => 'admin.config',
+Route::get('/admin/configs', [
+    'uses' => 'ConfigController@index',
+    'as' => 'admin.configs',
     'middleware' => 'roles',
     'roles' => ['Admin']
 ]);
-Route::get('/admin/config/create', [
-    'uses' => 'CofigController@create',
-    'as' => 'admin.config.create',
+Route::get('/admin/configs/create', [
+    'uses' => 'ConfigController@create',
+    'as' => 'admin.configs.create',
     'middleware' => 'roles',
     'roles' => ['Admin']
 ]);
-Route::get('/admin/config/{config}', [
-    'uses' => 'CofigController@show',
-    'as' => 'admin.config.show',
+Route::get('/admin/configs/{config}', [
+    'uses' => 'ConfigController@show',
+    'as' => 'admin.configs.show',
     'middleware' => 'roles',
     'roles' => ['Admin']
 ]); 
-Route::patch('/admin/config/{config}', [
-    'uses' => 'CofigController@update',
-    'as' => 'admin.config.update',
+Route::patch('/admin/configs/{config}', [
+    'uses' => 'ConfigController@update',
+    'as' => 'admin.configs.update',
     'middleware' => 'roles',
     'roles' => ['Admin']
 ]);
-Route::delete('/admin/config/{config}', [
-    'uses' => 'CofigController@destroy',
-    'as' => 'admin.config.destroy',
+Route::delete('/admin/configs/{config}', [
+    'uses' => 'ConfigController@destroy',
+    'as' => 'admin.configs.destroy',
     'middleware' => 'roles',
     'roles' => ['Admin']
 ]); 
-Route::get('/admin/config/{config}/edit', [
-    'uses' => 'CofigController@edit',
-    'as' => 'admin.config.edit',
+Route::get('/admin/configs/{config}/edit', [
+    'uses' => 'ConfigController@edit',
+    'as' => 'admin.configs.edit',
     'middleware' => 'roles',
     'roles' => ['Admin']
 ]);
