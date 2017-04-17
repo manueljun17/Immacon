@@ -14,7 +14,8 @@
                     
                     <div class="info-box-title"><i class="fa fa-clock-o" aria-hidden="true"></i> Schedule of Mass </div>
                     <div class="info-box-content">
-                    <p>
+                    {!! $general_info['mass_schedule'] !!}
+                    <!--<p>
                     <b>Monday, Tuesday, Thursday and Friday</b> <br>
                     7:00 AM <br>
                     <br>
@@ -23,7 +24,7 @@
                     <br>
                     <b>Sunday</b><br> 
                     5:30AM, 7:00AM, 8:30AM, 10:00AM, 4:00PM, 5:30PM, 7:00PM and 8:15PM<br>
-                    </p>   
+                    </p>   -->
                     </div>             
                 </div>
             </div>            
@@ -52,9 +53,10 @@
 
         <div class="row">
             <div class="col-md-12">
-                <p>
+                <!--<p>
                 © Immaculate Conception Parish, 2017
-                </p>
+                </p>-->
+                {!! $general_info['footer'] !!}
             </div>
             <div class="">
                 <!--<script src='https://maps.googleapis.com/maps/api/js?v=3.exp'></script><div style='overflow:hidden;height:200px;width:300px;'><div id='gmap_canvas' style='height:200px;width:300px;'></div><div><small><a href="http://embedgooglemaps.com">embed google maps</a></small></div><div><small><a href="https://www.autohuren.world/">in binnen- en buitenland</a></small></div><style>#gmap_canvas img{max-width:none!important;background:none!important}</style></div><script type='text/javascript'>function init_map(){var myOptions = {zoom:15,center:new google.maps.LatLng(15.155681874570003,120.58988841481938),mapTypeId: google.maps.MapTypeId.ROADMAP};map = new google.maps.Map(document.getElementById('gmap_canvas'), myOptions);marker = new google.maps.Marker({map: map,position: new google.maps.LatLng(15.155681874570003,120.58988841481938)});google.maps.event.addListener(marker, 'click', function(){});}google.maps.event.addDomListener(window, 'load', init_map);
