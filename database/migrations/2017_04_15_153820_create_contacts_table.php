@@ -17,7 +17,7 @@ class CreateContactsTable extends Migration
             $table->string('cell_number', 255);
             $table->string('phone_number', 255);
             $table->string('address', 255);
-            $table->string('email_account', 255);
+            $table->string('email_address', 255);
             $table->string('account_name', 255);
             $table->string('account_number', 255);
             $table->timestamps();
