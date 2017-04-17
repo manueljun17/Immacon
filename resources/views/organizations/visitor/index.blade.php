@@ -14,6 +14,20 @@
 </div>
 
 @if ($organizations->count())
+     @foreach ($organizations as $organization)
+        <div class="card" style="width: 20rem;">
+            <?php
+             if(preg_match('/<img.+src=[\'"](?P<src>.+?)[\'"].*>/i', $organization->description)) preg_match('/<img.+src=[\'"](?P<src>.+?)[\'"].*>/i', $organization->description, $image);
+             else $image['src']='image/settings/event-default.jpg';  
+             ?>
+            <img class="card-img-top" src="{{ asset( $image['src']) }}" alt="Organization Image"  width="100%" height="auto">
+            <div class="card-block">
+                <h4 class="card-title">{{ $organization->name }}</h4>
+                <a href="{{ route('organizations.show',array($organization->id)) }}" class="btn btn-info">Show</a>
+            </div>
+        </div>
+    @endforeach
+
     <table class="table table-striped table-bordered">
         <thead>
             <tr>
