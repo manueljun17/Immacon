@@ -329,20 +329,7 @@ Route::get('/admin/organizations/{organizations}/edit', [
 *@method Public Routes
 *
 */
-//Config
-Route::get('/config/autocomplete', [
-    'uses' => 'ConfigController@autocomplete', 
-    'as' => 'config.autocomplete'
-]);
 
-Route::get('/config/{config}', [
-    'uses' => 'ConfigController@show',
-    'as' => 'config.show'
-]); 
-Route::get('/config', [
-    'uses' => 'ConfigController@index',
-    'as' => 'config'
-]);
 
 //Event
 Route::get('/events/autocomplete', [
@@ -455,7 +442,21 @@ Route::get('/parishofficers/{parishofficers}', [
 
 
 ////////
+//Config
+// Route::get('/config/autocomplete', [
+//     'uses' => 'ConfigController@autocomplete', 
+//     'as' => 'config.autocomplete'
+// ]);
 
+// Route::get('/config/{config}', [
+//     'uses' => 'ConfigController@show',
+//     'as' => 'config.show'
+// ]); 
+// Route::get('/config', [
+//     'uses' => 'ConfigController@index',
+//     'as' => 'config'
+// ]);
+/////////
 //About
 Route::get('/about', [
     'uses' => 'AboutController@index',
