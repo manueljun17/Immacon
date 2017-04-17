@@ -14,7 +14,10 @@
 @if ($events->count())
     @foreach ($events as $event)
         <div class="card" style="width: 20rem;">
-            <?php {{ preg_match('/<img.+src=[\'"](?P<src>.+?)[\'"].*>/i', $event->body, $image); }} ?>
+            <?php
+             if(preg_match('/<img.+src=[\'"](?P<src>.+?)[\'"].*>/i', $event->body)) preg_match('/<img.+src=[\'"](?P<src>.+?)[\'"].*>/i', $event->body, $image);
+             else $image['src']='image/settings/event-default.jpg';  
+             ?>
             <img class="card-img-top" src="{{ asset( $image['src']) }}" alt="Events Image"  width="100%" height="auto">
             <div class="card-block">
                 <h4 class="card-title">{{ $event->title }}</h4>

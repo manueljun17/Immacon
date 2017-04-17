@@ -93,9 +93,7 @@ class EventsController extends Controller
             'title' => $request->get('title'),
             'body' => $request->get('body'),
             'event_location' => $request->get('event_location'),
-            'event_date' => $request->get('event_date'),
-            'start_time' => $request->get('start_time'),
-            'end_time' => $request->get('end_time') 
+            'event_date' => $request->get('event_date')
         ]);
         
         return Redirect::route('admin.events');
@@ -145,9 +143,7 @@ class EventsController extends Controller
             'title' => $request->get('title'),
             'body' => $request->get('body'),
             'event_location' => $request->get('event_location'),
-            'event_date' => $request->get('event_date'),
-            'start_time' => $request->get('start_time'),
-            'end_time' => $request->get('end_time') 
+            'event_date' => $request->get('event_date')
         ]);
         
         return Redirect::route('admin.events');

@@ -18,5 +18,7 @@ class DatabaseSeeder extends Seeder
         $this->call(AboutTableSeeder::class);
         $this->call(OrganizationTableSeeder::class);
         $this->call(ParishofficerTableSeeder::class);
+        $this->call(EventsTableSeeder::class);
+        
     }
 }

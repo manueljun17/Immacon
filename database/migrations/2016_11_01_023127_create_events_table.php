@@ -18,8 +18,6 @@ class CreateEventsTable extends Migration
             $table->string('title');
             $table->text('body');
             $table->string('event_location');
-            $table->time('start_time');
-            $table->time('end_time');
             $table->date('event_date');
             $table->timestamps();
             $table->foreign('user_id')
