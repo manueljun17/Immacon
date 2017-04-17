@@ -21,7 +21,6 @@
             <tr>
                 <th>ID</th>
                 <th>Name</th>
-                <th>Description</th>
                 <th></th>
                 <th></th>
                 <th></th>
@@ -33,7 +32,6 @@
                 <tr>
                     <td>{{ $organization->id }}</td>
                     <td>{{ $organization->name }}</td>
-                    <td>{{ $organization->description }}</td>
                     <td>
                         <a class="btn btn-info" href="{{ route('admin.organizations.show',array($organization->id)) }}">Show</a>
                     </td>
