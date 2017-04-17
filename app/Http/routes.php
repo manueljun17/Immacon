@@ -28,14 +28,14 @@ Route::get('/logout', [
     'uses' => 'Auth\AuthController@logout',
     'as' => 'logout'
 ]);
-Route::post('/register', [
-    'uses' => 'Auth\AuthController@register',
-    'as' => 'register'
-]);
-Route::get('/register', [
-    'uses' => 'Auth\AuthController@showRegistrationForm',
-    'as' => 'register.show'
-]);
+// Route::post('/register', [
+//     'uses' => 'Auth\AuthController@register',
+//     'as' => 'register'
+// ]);
+// Route::get('/register', [
+//     'uses' => 'Auth\AuthController@showRegistrationForm',
+//     'as' => 'register.show'
+// ]);
 
 //Admin
 Route::get('/admin', [
@@ -160,6 +160,74 @@ Route::patch('/admin/about/{about}', [
     'roles' => ['Admin']
 ]);
 
+//Contact
+Route::get('/admin/contact', [
+    'uses' => 'ContactController@index',
+    'as' => 'admin.contact',
+    'middleware' => 'roles',
+    'roles' => ['Admin']
+]);
+Route::get('/admin/contact/{contact}/edit', [
+    'uses' => 'ContactController@edit',
+    'as' => 'admin.contact.edit',
+    'middleware' => 'roles',
+    'roles' => ['Admin']
+]);
+Route::patch('/admin/contact/{contact}', [
+    'uses' => 'ContactController@update',
+    'as' => 'admin.contact.update',
+    'middleware' => 'roles',
+    'roles' => ['Admin']
+]);
+
+//Config
+Route::get('/admin/config/autocomplete', [
+    'uses' => 'CofigController@autocomplete', 
+    'as' => 'admin.config.autocomplete'
+]);
+Route::post('/admin/config', [
+    'uses' => 'CofigController@store',
+    'as' => 'admin.config.store',
+    'middleware' => 'roles',
+    'roles' => ['Admin']
+]);
+Route::get('/admin/config', [
+    'uses' => 'CofigController@index',
+    'as' => 'admin.config',
+    'middleware' => 'roles',
+    'roles' => ['Admin']
+]);
+Route::get('/admin/config/create', [
+    'uses' => 'CofigController@create',
+    'as' => 'admin.config.create',
+    'middleware' => 'roles',
+    'roles' => ['Admin']
+]);
+Route::get('/admin/config/{config}', [
+    'uses' => 'CofigController@show',
+    'as' => 'admin.config.show',
+    'middleware' => 'roles',
+    'roles' => ['Admin']
+]); 
+Route::patch('/admin/config/{config}', [
+    'uses' => 'CofigController@update',
+    'as' => 'admin.config.update',
+    'middleware' => 'roles',
+    'roles' => ['Admin']
+]);
+Route::delete('/admin/config/{config}', [
+    'uses' => 'CofigController@destroy',
+    'as' => 'admin.config.destroy',
+    'middleware' => 'roles',
+    'roles' => ['Admin']
+]); 
+Route::get('/admin/config/{config}/edit', [
+    'uses' => 'CofigController@edit',
+    'as' => 'admin.config.edit',
+    'middleware' => 'roles',
+    'roles' => ['Admin']
+]);
+
 //Events
 Route::get('/admin/events/autocomplete', [
     'uses' => 'EventsController@autocomplete', 
@@ -261,6 +329,20 @@ Route::get('/admin/organizations/{organizations}/edit', [
 *@method Public Routes
 *
 */
+//Config
+Route::get('/config/autocomplete', [
+    'uses' => 'ConfigController@autocomplete', 
+    'as' => 'config.autocomplete'
+]);
+
+Route::get('/config/{config}', [
+    'uses' => 'ConfigController@show',
+    'as' => 'config.show'
+]); 
+Route::get('/config', [
+    'uses' => 'ConfigController@index',
+    'as' => 'config'
+]);
 
 //Event
 Route::get('/events/autocomplete', [
@@ -378,4 +460,9 @@ Route::get('/parishofficers/{parishofficers}', [
 Route::get('/about', [
     'uses' => 'AboutController@index',
     'as' => 'about'
+]);
+//Contact
+Route::get('/contact', [
+    'uses' => 'ContactController@index',
+    'as' => 'contact'
 ]);
