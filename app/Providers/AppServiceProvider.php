@@ -5,6 +5,7 @@ namespace App\Providers;
 use Illuminate\Support\ServiceProvider;
 use View;
 use App\Config;
+use Illuminate\Support\Facades\Schema;
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -14,12 +15,18 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $myconfig = [];
-        $configs = Config::all();
-        foreach( $configs as $config ) {
-            $myconfig[$config->key] =$config->value; 
+        if (Schema::hasTable('configs'))
+        {
+            
+            $myconfig = [];
+            $configs = Config::all();
+            foreach( $configs as $config ) {
+                $myconfig[$config->key] =$config->value; 
+            }
+           
+            View::share('general_info',$myconfig);
         }
-        View::share('general_info',$myconfig);
+        
     }
 
     /**
