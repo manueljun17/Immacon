@@ -3,9 +3,9 @@
 <head>
 	<title>ImmaconAngelesCiityPH</title>
 	<link rel="stylesheet" type="text/css" href="{{ URL::to('src/bootstrap/css/bootstrap.min.css') }}">
-    
     <link rel="stylesheet" type="text/css" href="{!! elixir('css/app.css') !!}">
 	<link rel="stylesheet" type="text/css" href="{!! elixir('css/clock.css') !!}">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
     <style>
         .file-upload-button {

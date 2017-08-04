@@ -28,31 +28,6 @@
         </div>
     @endforeach
 
-    <table class="table table-striped table-bordered">
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Event</th>
-                <th>Location</th>
-                <th>Date</th>
-                <th></th>
-            </tr>
-        </thead>
-
-        <tbody>
-            @foreach ($events as $event)
-                <tr>
-                    <td>{{ $event->id }}</td>
-                    <td>{{ $event->title }}</td>
-                    <td>{{ $event->event_location }}</td>
-                    <td>{{ $event->event_date }}</td>
-                    <td>
-                        <a class="btn btn-info" href="{{ route('events.show',array($event->id)) }}">Show</a>
-                    </td>
-                </tr>
-            @endforeach
-        </tbody>
-    </table>
     <div class="text-center">
         <nav>
         {!! $events->appends( Request::query() )->render() !!}

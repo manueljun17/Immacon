@@ -28,29 +28,6 @@
         </div>
     @endforeach
 
-    <table class="table table-striped table-bordered">
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Name</th>
-                <th></th>
-           
-            </tr>
-        </thead>
-
-        <tbody>
-            @foreach ($organizations as $organization)
-                <tr>
-                    <td>{{ $organization->id }}</td>
-                    <td>{{ $organization->name }}</td>
-                    <td>
-                        <a class="btn btn-info" href="{{ route('organizations.show',array($organization->id)) }}">Show</a>
-                    </td>
-                </tr>
-            @endforeach
-        </tbody>
-      
-    </table>
     <div class="text-center">
     <nav>
       {!! $organizations->appends( Request::query() )->render() !!}
