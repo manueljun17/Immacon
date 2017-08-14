@@ -2,27 +2,27 @@
 @foreach ($contacts as $contact)
 
     <div>
-    <h1>Cellphone</h1>
+    <h3>Cellphone</h3>
     {{ $contact->cell_number }}
     </div>
     <div>
-    <h1>Phone</h1>
+    <h3>Phone</h3>
     {{ $contact->phone_number }}
     </div>
     <div>
-    <h1>Address</h1>
+    <h3>Address</h3>
         {{ $contact->address }}
     </div>
     <div>
-    <h1>Email</h1>
+    <h3>Email</h3>
     {{ $contact->email_address }}
     </div>
     <div>
-    <h1>Bank Name</h1>
+    <h3>Bank Name</h3>
     {{ $contact->account_name }}
     </div>
     <div>
-    <h1>Bank Number</h1>
+    <h3>Bank Number</h3>
         {{ $contact->account_number }}
     </div>
   

@@ -2,7 +2,7 @@
  
     <nav class="navbar navbar-inverse navbar-toggleable-md">
       <div class="container">
-        <button class="navbar-toggler navbar-toggler-right collapsed" type="button" data-toggle="collapse" data-target="#navbarsExampleContainer" aria-controls="navbarsExampleContainer" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarsExampleContainer" aria-controls="navbarsExampleContainer" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <a class="navbar-brand" href="/">ImmaconAngelesCityPH CHURCH</a>
@@ -17,8 +17,8 @@
                         <li class="nav-item"><a  class="nav-link" href="/parishofficers">Parish Officers</a></li>
                         <li class="nav-item"><a  class="nav-link" href="/about">About</a></li>
                         <li class="nav-item"><a  class="nav-link" href="/contact">Contact Us</a></li>   
-                        <li class="nav-item"><a  class="nav-link" href="/login">Login</a></li>
-                        <li class="nav-item"><a  class="nav-link" href="/register">Register</a></li>
+                        <!--<li class="nav-item"><a  class="nav-link" href="/login">Login</a></li>
+                        <li class="nav-item"><a  class="nav-link" href="/register">Register</a></li>-->
                     </ul>
                 @else
                     @if(Auth::user()->hasRole('Admin'))

@@ -1,5 +1,6 @@
+<h1>Contact</h1>
 @if ($contacts->count())
-    <table class="table table-striped table-bordered">
+    <table class="table table-striped table-bordered table-responsive">
         <thead>
             <tr>
                 <th>Cell Phone</th>
@@ -8,6 +9,7 @@
                 <th>E-mail</th>
                 <th>Bank Name</th>
                 <th>Bank Number</th>
+                <th>Action</th>
             </tr>
         </thead>
 

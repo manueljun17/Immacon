@@ -1,5 +1,6 @@
+<h1>About</h1>
 @if ($abouts->count())
-    <table class="table table-striped table-bordered">
+    <table class="table table-striped table-bordered table-responsive">
         <thead>
             <tr>
                 <th>Mission</th>

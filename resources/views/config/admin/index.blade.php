@@ -14,7 +14,7 @@
 </div>
 
 @if ($configs->count())
-    <table class="table table-striped table-bordered">
+    <table class="table table-striped table-bordered table-responsive">
         <thead>
             <tr>
                 <th>ID</th>

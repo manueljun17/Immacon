@@ -22,7 +22,7 @@
             <span>Schedule</span>
         </div>
         <div class="mv-content">
-            <p>{{ $about->mission}}</p>
+            <p>{!! $general_info['mass_schedule'] !!}</p>
         </div>
 </div>
 <div class="col-md-6">

@@ -1,15 +1,15 @@
 @if ($abouts->count())
 @foreach ($abouts as $about)
     <div class="mission">
-    <h1>Mission</h1>
+    <h3>Mission</h3>
     {{ $about->mission }}
     </div>
     <div class="vision">
-    <h1>Vision</h1>
+    <h3>Vision</h3>
     {{ $about->vision }}
     </div>
     <div class="history">
-    <h1>History</h1>
+    <h3>History</h3>
         {{ $about->history }}
     </div>
   

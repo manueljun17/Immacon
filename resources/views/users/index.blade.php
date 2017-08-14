@@ -17,7 +17,7 @@
 </div>
 
 @if ($users->count())
-    <table class="table table-striped table-bordered">
+    <table class="table table-striped table-bordered table-responsive">
         <thead>
             <tr>
                 <th>ID</th>
@@ -27,8 +27,8 @@
                 <th>User</th>
                 <th>Admin</th>
                 <th></th>
-                <th></th>
-                <th></th>
+                <!--<th></th>
+                <th></th>-->
             </tr>
         </thead>
 
@@ -39,8 +39,8 @@
                     <td>{{ $user->first_name }}</td>
                     <td>{{ $user->last_name }}</td>
                     <td>{{ $user->email }}</td>
-                    <td><input disabled type="checkbox" {{ $user->hasRole('User') ? 'checked' : '' }} name="role_user"></td>
-                    <td><input disabled type="checkbox" {{ $user->hasRole('Admin') ? 'checked' : '' }} name="role_admin"></td>
+                    <!--<td><input disabled type="checkbox" {{ $user->hasRole('User') ? 'checked' : '' }} name="role_user"></td>
+                    <td><input disabled type="checkbox" {{ $user->hasRole('Admin') ? 'checked' : '' }} name="role_admin"></td>-->
                     <td>
                         <a class="btn btn-info" href="{{ route('admin.users.show',array($user->id)) }}">Show</a>
                     </td>

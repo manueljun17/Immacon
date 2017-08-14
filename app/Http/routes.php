@@ -16,10 +16,10 @@ Route::group(['middleware' => 'web'], function () {
 });
 //Auth    
 // Route::auth();
-Route::get('/login', [
-    'uses' => 'Auth\AuthController@showLoginForm',
-    'as' => 'login.show'
-]);
+// Route::get('/login', [
+//     'uses' => 'Auth\AuthController@showLoginForm',
+//     'as' => 'login.show'
+// ]);
 Route::post('/login', [
     'uses' => 'Auth\AuthController@login',
     'as' => 'login'
