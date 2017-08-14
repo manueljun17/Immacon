@@ -3,29 +3,29 @@
 @section('content')
 <h1>Edit Contact Us</h1>
 {{ Form::model($contact, array('method' => 'PATCH', 'route' => array('admin.contact.update', $contact->id))) }}
-    <ul>
+    <ul style="list-style-type: none;">
+    <h4>{{ Form::label('cell_number', 'Cell Phone:') }}</h4>
         <li>
-            {{ Form::label('cell_number', 'Cell Phone:') }}
             {{ Form::textarea('cell_number') }}
         </li>
+    <h4>{{ Form::label('phone_number', 'Tele Phone:') }}</h4>
         <li>
-            {{ Form::label('phone_number', 'Tele Phone:') }}
             {{ Form::textarea('phone_number') }}
         </li>
+    <h4>{{ Form::label('address', 'Address:') }}</h4>
         <li>
-            {{ Form::label('address', 'Address:') }}
             {{ Form::textarea('address') }}
         </li>
+    <h4>{{ Form::label('email_address', 'E-mail:') }}</h4>
         <li>
-            {{ Form::label('email_address', 'E-mail:') }}
             {{ Form::textarea('email_address') }}
         </li>
+    <h4>{{ Form::label('account_name', 'Bank Name:') }}</h4>
         <li>
-            {{ Form::label('account_name', 'Bank Name:') }}
             {{ Form::textarea('account_name') }}
         </li>
+    <h4>{{ Form::label('account_number', 'Bank Number:') }}</h4>
         <li>
-            {{ Form::label('account_number', 'Bank Number:') }}
             {{ Form::textarea('account_number') }}
         </li>
         <li>

@@ -3,17 +3,17 @@
 @section('content')
 <h1>Edit About</h1>
 {{ Form::model($about, array('method' => 'PATCH', 'route' => array('admin.about.update', $about->id))) }}
-    <ul>
+    <ul style="list-style-type: none;">
+    <h4>{{ Form::label('mission', 'Mission:') }}</h4>
         <li>
-            {{ Form::label('mission', 'Mission:') }}
             {{ Form::textarea('mission') }}
         </li>
+    <h4>{{ Form::label('vision', 'Vision:') }}</h4>
         <li>
-            {{ Form::label('vision', 'Vision:') }}
             {{ Form::textarea('vision') }}
         </li>
+    <h4>{{ Form::label('history', 'History:') }}</h4>
         <li>
-            {{ Form::label('history', 'History:') }}
             {{ Form::textarea('history') }}
         </li>
         <li>
