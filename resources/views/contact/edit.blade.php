@@ -1,5 +1,4 @@
 @extends('layouts.contact')
-
 @section('content')
 <h1>Edit Contact Us</h1>
 {{ Form::model($contact, array('method' => 'PATCH', 'route' => array('admin.contact.update', $contact->id))) }}
