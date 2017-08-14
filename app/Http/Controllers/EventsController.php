@@ -36,7 +36,7 @@ class EventsController extends Controller
         })
         ->orderBy('id', 'desc')
         ->latest('created_at')
-        ->paginate(10);
+        ->paginate(9);
         return view('events.index', compact('events'));
     }
     public function autocomplete(Request $request)

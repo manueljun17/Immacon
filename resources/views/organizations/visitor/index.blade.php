@@ -14,8 +14,9 @@
 </div>
 
 @if ($organizations->count())
+<div class="card-columns">
      @foreach ($organizations as $organization)
-        <div class="card" style="width: 20rem;">
+        <div class="card">
             <?php
              if(preg_match('/<img.+src=[\'"](?P<src>.+?)[\'"].*>/i', $organization->description)) preg_match('/<img.+src=[\'"](?P<src>.+?)[\'"].*>/i', $organization->description, $image);
              else $image['src']='image/settings/event-default.jpg';  
@@ -27,7 +28,7 @@
             </div>
         </div>
     @endforeach
-
+</div>
     <div class="text-center">
     <nav>
       {!! $organizations->appends( Request::query() )->render() !!}

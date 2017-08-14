@@ -33,7 +33,7 @@ class ParishOfficersController extends Controller
             }
         })
         ->orderBy('id', 'desc')
-        ->paginate(10);
+        ->paginate(9);
         return view('parishofficers.index', compact('parishofficers'));
     }
 

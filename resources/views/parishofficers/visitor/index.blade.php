@@ -12,9 +12,10 @@
 {!! Form::close() !!}
 </div>
 @if ($parishofficers->count())
+<div class="card-columns">
     @foreach ($parishofficers as $parishofficer)
 
-        <div class="card" style="width: 20rem;">
+        <div class="card">
         <img class="card-img-top" src="{{ asset($parishofficer->user_image)}}" alt="Parish Officer Image"  width="100%" height="auto">
         <div class="card-block">
             <h4 class="card-title">{{ $parishofficer->name }}</h4>
@@ -24,6 +25,7 @@
         </div>
         </div>
     @endforeach
+    </div>
     <div class="text-center">
         <nav>
         {!! $parishofficers->appends( Request::query() )->render() !!}

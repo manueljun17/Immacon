@@ -28,7 +28,7 @@ class OrganizationsController extends Controller
             }
         })
         ->orderBy('id', 'desc')
-        ->paginate(10);
+        ->paginate(9);
         return view('organizations.index', compact('organizations'));
     }
     public function autocomplete(Request $request)
