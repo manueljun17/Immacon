@@ -38,7 +38,8 @@ class ContactController extends Controller
         {
             return redirect('contact');
         }
-        return view('contact.edit', compact('contact'));
+        $defaultImage = 'img/settings/1.jpg';
+        return view('contact.edit', compact('contact','defaultImage'));
     }
 
     /**
