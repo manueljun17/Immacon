@@ -14,7 +14,7 @@
         @else
         <div class="form-group file-upload-button">
             <img id="myBanner" src="{{asset($defaultImage)}}" style="width: 100%"></img>
-            <input name="user_image" type="file" onchange="showimagepreview(this)" />
+            <input name="image_banner" type="file" onchange="showimagepreview(this)" />
         </div>
         @endif
     </li>
@@ -49,5 +49,5 @@
         </li>
     </ul>
 {{ Form::close() }}
-
+@include('errors.list')
 @stop

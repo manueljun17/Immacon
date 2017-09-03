@@ -20,6 +20,7 @@ class CreateContactsTable extends Migration
             $table->string('email_address', 255);
             $table->string('account_name', 255);
             $table->string('account_number', 255);
+            $table->string('image_banner', 255);
             $table->timestamps();
         });
     }

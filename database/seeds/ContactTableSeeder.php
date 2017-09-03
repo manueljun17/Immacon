@@ -18,6 +18,7 @@ class ContactTableSeeder extends Seeder
         $contact->email_address = 'immacon@gmail.com';
         $contact->account_name = 'immacon';
         $contact->account_number = '12345';
+        $contact->image_banner = 'img/tmp/firstbanner.jpg';
         $contact->save();
     }
 }

@@ -38,7 +38,7 @@ class ContactController extends Controller
         {
             return redirect('contact');
         }
-        $defaultImage = 'img/settings/1.jpg';
+        $defaultImage = 'img/tmp/firstbanner.jpg';
         return view('contact.edit', compact('contact','defaultImage'));
     }
 
@@ -56,11 +56,37 @@ class ContactController extends Controller
         if ($validation->passes())
         {
             $contact = Contact::find($id);
-            $contact->update($input);
+            $contact_array = array(
+                'cell_number' => $request->get('cell_number'),
+                'phone_number' => $request->get('phone_number'),
+                'address' => $request->get('address'),
+                'email_address' => $request->get('email_address'),
+                'account_name' => $request->get('account_name'),
+                'account_number' => $request->get('account_number')
+            );
+            if( $request->file('image_banner')) {
+                $mytime = Carbon::now()->format('s-h-d-');
+                File::delete($parishofficers->user_image);
+                $file = $request->file('image_banner');
+                $destinationPath = 'img/settings/';
+                $extension = $file->getClientOriginalExtension();
+                $filename= $mytime . $file->getClientOriginalName();
+                $uploadSuccess = $request->file('image_banner')
+                ->move($destinationPath, $filename);
+                $contact_array['image_banner'] = $destinationPath . $filename;
+                $contact->update($contact_array);
+            }
+            else {
+                $contact->update($contact_array);
+            }
             return Redirect::route('admin.contact');
         }
-        return Redirect::route('admin.contact.edit', $id)
-        ->withInput();
+        else {
+            return Redirect::route('admin.contact.edit', $id)
+            ->withErrors($validation)
+            ->withInput();
+        }
+        
     }
 
 }

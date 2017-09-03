@@ -15,7 +15,7 @@
 			max-width:1070px;
             height:100%;
         }
-        input[name="user_image"] {
+        input[name="image_banner"] {
             position: absolute;
             z-index: 100;
             top: 0;

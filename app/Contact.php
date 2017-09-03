@@ -12,7 +12,8 @@ class Contact extends Model
         'address',
     	'email_address',
         'account_name',
-    	'account_number'
+        'account_number',
+        'image_banner'
     ];
     public static $rules = array(
         'cell_number' => 'required',
@@ -20,6 +21,7 @@ class Contact extends Model
         'address' => 'required',
         'email_address' => 'required',
         'account_name' => 'required',
-        'account_number' => 'required'
+        'account_number' => 'required',
+        'image_banner' => 'required'
     );
 }
