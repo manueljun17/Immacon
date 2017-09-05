@@ -43,6 +43,7 @@
       </div>
     </nav>
     <div class="banner">
-        <img src="{{asset('img/settings/1.jpg')}}">
+        <img src="{{asset($contact_info['image_banner'])}}">
+
     </div>
 </header>

@@ -2,11 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use File;
+
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
 
 use App\Contact;
+
+use Carbon\Carbon;
 
 use Validator;
 
@@ -49,13 +53,13 @@ class ContactController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Contact $contact)
     {
         $input = $request->all();
         $validation = Validator::make($input, Contact::$rules);
         if ($validation->passes())
         {
-            $contact = Contact::find($id);
+            $contact = Contact::find($contact->id);
             $contact_array = array(
                 'cell_number' => $request->get('cell_number'),
                 'phone_number' => $request->get('phone_number'),
@@ -64,9 +68,10 @@ class ContactController extends Controller
                 'account_name' => $request->get('account_name'),
                 'account_number' => $request->get('account_number')
             );
+            
             if( $request->file('image_banner')) {
                 $mytime = Carbon::now()->format('s-h-d-');
-                File::delete($parishofficers->user_image);
+                File::delete($contact->image_banner);
                 $file = $request->file('image_banner');
                 $destinationPath = 'img/settings/';
                 $extension = $file->getClientOriginalExtension();
@@ -82,7 +87,7 @@ class ContactController extends Controller
             return Redirect::route('admin.contact');
         }
         else {
-            return Redirect::route('admin.contact.edit', $id)
+            return Redirect::route('admin.contact.edit', $contact->id)
             ->withErrors($validation)
             ->withInput();
         }

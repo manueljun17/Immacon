@@ -21,7 +21,6 @@ class Contact extends Model
         'address' => 'required',
         'email_address' => 'required',
         'account_name' => 'required',
-        'account_number' => 'required',
-        'image_banner' => 'required'
+        'account_number' => 'required'
     );
 }

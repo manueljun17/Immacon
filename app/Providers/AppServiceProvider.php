@@ -5,6 +5,7 @@ namespace App\Providers;
 use Illuminate\Support\ServiceProvider;
 use View;
 use App\Config;
+use App\Contact;
 use Illuminate\Support\Facades\Schema;
 class AppServiceProvider extends ServiceProvider
 {
@@ -17,7 +18,6 @@ class AppServiceProvider extends ServiceProvider
     {
         if (Schema::hasTable('configs'))
         {
-            
             $myconfig = [];
             $configs = Config::all();
             foreach( $configs as $config ) {
@@ -25,6 +25,15 @@ class AppServiceProvider extends ServiceProvider
             }
            
             View::share('general_info',$myconfig);
+        }
+        if (Schema::hasTable('contacts'))
+        {
+            $mycontact = [];
+            $contacts = Contact::all();
+            foreach( $contacts as $contact) {
+                $mycontact = $contact;
+            }
+            View::share('contact_info',$mycontact);
         }
         
     }
